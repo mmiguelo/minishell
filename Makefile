@@ -5,11 +5,10 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/02/10 15:04:25 by frbranda          #+#    #+#              #
-#    Updated: 2025/03/07 13:28:53 by mmiguelo         ###   ########.fr        #
+#    Created: 2025/03/13 12:12:18 by mmiguelo          #+#    #+#              #
+#    Updated: 2025/03/13 12:12:56 by mmiguelo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 #==============================================================================#
 #                                    NAMES                                     #
@@ -23,11 +22,7 @@ RM = rm -rf
 VAL = valgrind --suppressions=readline.supp --leak-check=full --show-leak-kinds=all --track-origins=yes --errors-for-leak-kinds=definite
 
 GENERAL = main.c
-BUILTIN = builtin_utils.c cd.c echo.c exit.c pwd.c
-PARSING = quote_handler.c tokenizer.c token_list_tools.c initialize_structs.c
-FREE = free.c free_shell.c
-HEREDOC = heredoc.c
-PRINT = print_token.c print_token_list.c
+BUILTIN = builtin_utils.c cd.c echo.c exit.c pwd.c env.c export.c unset.c
 
 NAME = minishell
 
@@ -46,10 +41,6 @@ RESET = \033[0m
 
 VPATH += src
 VPATH += src/builtin
-VPATH += src/heredoc
-VPATH += src/parsing
-VPATH += src/frees
-VPATH += src/prints
 
 #==============================================================================#
 #                                    FILES                                     #

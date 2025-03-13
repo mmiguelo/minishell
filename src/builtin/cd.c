@@ -6,8 +6,15 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:19:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/13 11:19:42 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/13 12:29:22 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	ft_cd(char **args, char ***envp)
+{
+	(void)envp;
+	(void)args;
+	return (0);
+}

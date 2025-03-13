@@ -6,8 +6,15 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/13 11:20:42 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/13 12:29:55 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int		    ft_export(char **args, char ***envp)
+{
+    (void)envp;
+	(void)args;
+    return(0);
+}

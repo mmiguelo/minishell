@@ -6,11 +6,11 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:18:53 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/13 11:18:55 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/13 12:14:23 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include "minishell.h"
+#include "minishell.h"
 
 t_builtin	ft_isbuiltin(char *cmd)
 {
@@ -29,4 +29,4 @@ t_builtin	ft_isbuiltin(char *cmd)
 			return (builtin_ft[i]);
 	}
 	return (NULL);
-} */
+}

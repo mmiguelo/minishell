@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:11:42 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/13 11:24:38 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/13 12:17:00 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ typedef int (*t_builtin)(char **, char ***);
 #=============================================================================*/
 
 t_builtin	ft_isbuiltin(char *cmd);
-void		ft_echo(char **args, char ***envp);
-void		ft_cd(char **args, char ***envp);
-void		ft_pwd(char **args, char ***envp);
-void		ft_export(char **args, char ***envp);
-void		ft_unset(char **args, char ***envp);
-void		ft_env(char **args, char ***envp);
-void		ft_exit(char **args, char ***envp);
+int         ft_echo(char **args, char ***envp);
+int		    ft_cd(char **args, char ***envp);
+int	    	ft_pwd(char **args, char ***envp);
+int		    ft_export(char **args, char ***envp);
+int	    	ft_unset(char **args, char ***envp);
+int	    	ft_env(char **args, char ***envp);
+int	    	ft_exit(char **args, char ***envp);
 
 #endif
