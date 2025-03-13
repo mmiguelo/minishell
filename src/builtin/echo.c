@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:19:50 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/13 12:41:33 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/13 14:09:57 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_is_n(char *arg)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	if (arg[++i] != '-')
@@ -28,10 +28,11 @@ static int	ft_is_n(char *arg)
 	}
 	return (1);
 }
+
 int	ft_echo(char **args, char ***envp)
 {
-	int i;
-	int n_flag;
+	int	i;
+	int	n_flag;
 
 	(void)envp;
 	i = 1;

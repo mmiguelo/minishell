@@ -6,15 +6,15 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:01 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/13 12:29:31 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/13 14:16:22 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	    	ft_exit(char **args, char ***envp)
+int	ft_exit(char **args, char ***envp)
 {
-    (void)envp;
+	(void)envp;
 	(void)args;
-    return(0);
+	return (0);
 }

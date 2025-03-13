@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:18:53 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/13 12:14:23 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/13 18:11:45 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_builtin	ft_isbuiltin(char *cmd)
 		"echo", "cd", "pwd", "export", "unset", "env", "exit", NULL};
 	static int	(*builtin_ft[8])(char **, char ***) = {
 		&ft_echo, &ft_cd, &ft_pwd, &ft_export, &ft_unset, &ft_env, &ft_exit};
-	int i;
+	int			i;
 
 	i = -1;
 	if (!cmd)
