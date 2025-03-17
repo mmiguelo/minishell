@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:21:06 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/17 17:30:08 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:00:07 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,18 @@
 void	ft_erase_var(char *var, t_shell *shell)
 {
 	int i;
-	int len;
 
-	len = ft_strlen(var);
-	if (!validate_var(var))
-	
+	i = get_env_line(var, shell);
+	if (i >= 0)
+	{
+		free (shell->envp[i]);
+		while (shell->envp[i])
+		{
+			shell->envp[i] = shell->envp[i + 1];
+			i++;
+		}
+		shell->envp[i] = NULL;
+	}
 }
 
 int	ft_unset(char **args, t_shell *shell)

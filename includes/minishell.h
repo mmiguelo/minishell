@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:11:42 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/17 17:14:59 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/17 17:56:25 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ int			ft_pwd(char **args, t_shell *shell);
 int			ft_export(char **args, t_shell *shell);
 int			ft_unset(char **args, t_shell *shell);
 int			ft_env(char **args, t_shell *shell);
+int			get_env_line(char *var, t_shell *shell);
+void		ft_erase_var(char *var, t_shell *shell);
+int			validate_var(char *var);
 void		ft_init(t_shell *shell, char **envp);
 void		init_env(t_shell *shell, char **envp);
 void		when_no_env(t_shell *shell);
