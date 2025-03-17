@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:19:11 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/13 17:32:47 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/17 12:03:47 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,6 @@ void	ft_minishell(t_shell *shell, char **envp)
 		else
 			printf("Command not found\n");
 	}
-}
-void	ft_init(t_shell *shell, char **envp)
-{
-	shell->envp = envp;
 }
 
 int	main(int argc, char **argv, char **envp)

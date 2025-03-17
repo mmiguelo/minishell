@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:18:53 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/13 18:11:45 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/17 13:03:40 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_builtin	ft_isbuiltin(char *cmd)
+t_builtin	ft_isbuiltin(char *cmd, t_shell *shell)
 {
 	static char	*builtins[8] = {
 		"echo", "cd", "pwd", "export", "unset", "env", "exit", NULL};
-	static int	(*builtin_ft[8])(char **, char ***) = {
+	static int	(*builtin_ft[8])(char **, t_shell *) = {
 		&ft_echo, &ft_cd, &ft_pwd, &ft_export, &ft_unset, &ft_env, &ft_exit};
 	int			i;
 

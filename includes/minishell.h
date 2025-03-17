@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:11:42 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/13 17:26:39 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/17 13:07:17 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef int (*t_builtin)(char **, char ***);
 
 typedef struct s_shell
 {
-	char		**envp;
+	char		***envp;
 	char		**cmd;
 }				t_shell;
 
@@ -33,14 +33,14 @@ typedef struct s_shell
 #                               BUILTIN                                        #
 #=============================================================================*/
 
-t_builtin	ft_isbuiltin(char *cmd);
-int			ft_echo(char **args, char ***envp);
-int			ft_cd(char **args, char ***envp);
-int			ft_pwd(char **args, char ***envp);
-int			ft_export(char **args, char ***envp);
-int			ft_unset(char **args, char ***envp);
-int			ft_env(char **args, char ***envp);
-int			ft_exit(char **args, char ***envp);
+t_builtin	ft_isbuiltin(char *cmd, t_shell *shell);
+int			ft_echo(char **args, t_shell *shell);
+int			ft_cd(char **args, t_shell *shell);
+int			ft_pwd(char **args, t_shell *shell);
+int			ft_export(char **args, t_shell *shell);
+int			ft_unset(char **args, t_shell *shell);
+int			ft_env(char **args, t_shell *shell);
+int			ft_exit(char **args, t_shell *shell);
 
 /*=============================================================================#
 #                               UTILS                                          #

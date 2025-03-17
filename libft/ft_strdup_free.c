@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   export.c                                           :+:      :+:    :+:   */
+/*   ft_strdup_free.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/13 11:20:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/17 10:54:19 by mmiguelo         ###   ########.fr       */
+/*   Created: 2025/03/17 12:06:24 by mmiguelo          #+#    #+#             */
+/*   Updated: 2025/03/17 12:09:17 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int	ft_export(char **args, char ***envp)
+char	*ft_strdup_free(char *s1, char *s2)
 {
-	if (!)
-	return (0);
-}
+	char *dest;
 
-int	ft_export(char **args, char ***envp)
-{
-	(void)args;
-	(void)envp;
-	return (0);
+	dest = ft_strjoin(s1, s2);
+	free(s1);
+	free(s2);
+	return (dest);
 }
