@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:13 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/13 14:45:25 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/17 13:15:04 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ static int	parse_pwd(char *arg)
 	return (0);
 }
 
-int	ft_pwd(char **args, char ***envp)
+int	ft_pwd(char **args, t_shell *shell)
 {
 	char	cwd[1024];
 
-	(void)envp;
+	(void)shell;
 	if (args[1] && parse_pwd(args[1]))
 		return (1);
 	if (getcwd(cwd, sizeof(cwd)) != NULL)

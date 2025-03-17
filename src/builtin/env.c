@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:21:45 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/17 13:01:11 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/17 13:13:26 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,21 +42,21 @@ int	ft_parse_env(char *arg)
 	}
 }
 
-int	ft_env(char **args, char ***envp)
+int	ft_env(char **args, t_shell *shell)
 {
 	int	i;
 
 	(void)args;
 	i = 0;
-	if (!*envp)
+	if (!shell->envp)
 		return (0);
 	if (args[1])
 		ft_parse_env(args[1]);
 	else
 	{
-		while ((*envp)[i])
+		while ((*shell->envp)[i])
 		{
-			ft_printf("%s\n", (*envp)[i]);
+			ft_printf("%s\n", (*shell->envp)[i]);
 			i++;
 		}
 	}

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:01 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/13 14:16:22 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/17 13:14:07 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_exit(char **args, char ***envp)
+int	ft_exit(char **args, t_shell *shell)
 {
-	(void)envp;
+	(void)shell;
 	(void)args;
 	return (0);
 }

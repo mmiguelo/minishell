@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:11:42 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/17 13:07:17 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/17 13:10:23 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include "../libft/libft.h"
 
 //function pointer type for builtins
-typedef int (*t_builtin)(char **, char ***);
+typedef int (*t_builtin)(char **, t_shell *);
 
 typedef struct s_shell
 {

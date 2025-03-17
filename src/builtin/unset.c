@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:21:06 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/13 14:17:32 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/17 13:15:30 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_unset(char **args, char ***envp)
+int	ft_unset(char **args, t_shell *shell)
 {
-	(void)envp;
+	(void)shell;
 	(void)args;
 	return (0);
 }
