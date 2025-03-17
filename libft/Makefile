@@ -59,6 +59,7 @@ SRCS +=	ft_strncmp.c
 SRCS +=	ft_strnstr.c
 SRCS +=	ft_strrchr.c
 SRCS +=	ft_strtrim.c
+SRCS += ft_strdup_free.c
 SRCS +=	ft_substr.c
 SRCS +=	ft_tolower.c
 SRCS +=	ft_toupper.c

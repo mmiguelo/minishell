@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+         #
+#    By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/13 12:12:18 by mmiguelo          #+#    #+#              #
-#    Updated: 2025/03/13 12:12:56 by mmiguelo         ###   ########.fr        #
+#    Updated: 2025/03/17 16:43:21 by mmiguelo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,9 @@ RM = rm -rf
 
 VAL = valgrind --suppressions=readline.supp --leak-check=full --show-leak-kinds=all --track-origins=yes --errors-for-leak-kinds=definite
 
-GENERAL = main.c
+GENERAL = main.c init.c free.c
 BUILTIN = builtin_utils.c cd.c echo.c exit.c pwd.c env.c export.c unset.c
+ERRORS = print_error.c
 
 NAME = minishell
 
@@ -41,6 +42,7 @@ RESET = \033[0m
 
 VPATH += src
 VPATH += src/builtin
+VPATH += src/errors
 
 #==============================================================================#
 #                                    FILES                                     #
@@ -48,10 +50,7 @@ VPATH += src/builtin
 
 SRC +=	$(GENERAL)
 SRC +=	$(BUILTIN)
-SRC +=	$(HEREDOC)
-SRC +=	$(PARSING)
-SRC +=	$(FREE)
-SRC +=	$(PRINT)
+SRC +=	$(ERRORS)
 
 # Library Paths
 LIBFT_DIR = libft

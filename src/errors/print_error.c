@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   export.c                                           :+:      :+:    :+:   */
+/*   print_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/13 11:20:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/17 14:24:00 by mmiguelo         ###   ########.fr       */
+/*   Created: 2025/03/17 16:14:30 by mmiguelo          #+#    #+#             */
+/*   Updated: 2025/03/17 17:15:05 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/* int	ft_export(char **args, t_shell *shell)
+int	print_msg_error(char *error)
 {
-	if (!shell)
-	return (0);
-} */
+	int status_code;
 
-int	ft_export(char **args, t_shell *shell)
-{
-	(void)args;
-	(void)shell;
-	return (0);
+	status_code = 0;
+	if (errno)
+		perror(error);
+/* 	else
+		status_code = ft_print_buffered_error(error); */
+	return (status_code);
 }

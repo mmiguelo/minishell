@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:19:11 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/17 12:03:47 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/17 14:12:40 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ void	ft_minishell(t_shell *shell, char **envp)
 			token = strtok(NULL, " ");
 		}
 		args[i] = NULL;
-		func = ft_isbuiltin(args[0]);
+		func = ft_isbuiltin(args[0], shell);
 		if (func)
 		{
-			if (func(args, &envp) != 0)
+			if (func(args, shell) != 0)
 				printf("Error executing %s\n", args[0]);
 		}
 		else
