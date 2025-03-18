@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:11:42 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/17 17:56:25 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/18 19:05:34 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_shell
 }				t_shell;
 
 //function pointer type for builtins
-typedef int (*t_builtin)(char **, t_shell *);
+typedef int	(*t_builtin)(char **, t_shell *);
 
 /*=============================================================================#
 #                               BUILTIN                                        #
