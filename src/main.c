@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:19:11 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/17 14:12:40 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/18 19:09:06 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,16 @@ void	ft_minishell(t_shell *shell, char **envp)
 	char		*token;
 	char		*input;
 	char		*args[100];
-	
+	int			i;
+
 	ft_init(shell, envp);
 	while (1)
 	{
 		input = readline("minishell> ");
 		if (!input)
-			break;
+			break ;
 		add_history(input);
-		int	i = 0;
+		i = 0;
 		token = strtok(input, " ");
 		while (token && i < 99)
 		{
@@ -63,7 +64,7 @@ void	ft_minishell(t_shell *shell, char **envp)
 
 int	main(int argc, char **argv, char **envp)
 {
-	t_shell shell;
+	t_shell	shell;
 
 	(void)argc;
 	(void)argv;
