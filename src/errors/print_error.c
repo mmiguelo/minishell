@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:14:30 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/17 17:15:05 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/18 19:24:35 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	print_msg_error(char *error)
 {
-	int status_code;
+	int	status_code;
 
 	status_code = 0;
 	if (errno)
