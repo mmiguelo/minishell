@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:18:53 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/18 19:23:44 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/18 19:27:48 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,13 @@ int	validate_var(char *var)
 
 t_builtin	ft_isbuiltin(char *cmd, t_shell *shell)
 {
-	int		i;
-	char	*builtins[8];
-	int		(*builtin_ft[8])(char **, t_shell *);
+	static char	*builtins[8] = {
+		"echo", "cd", "pwd", "export", "unset", "env", "exit", NULL};
+	static int	(*builtin_ft[8])(char **, t_shell *) = {
+		&ft_echo, &ft_cd, &ft_pwd, &ft_export, &ft_unset, &ft_env, &ft_exit};
+	int			i;
 
 	(void)shell;
-	(*builtin_ft[8])(char **, t_shell *) = {&ft_echo, &ft_cd,
-		&ft_pwd, &ft_export, &ft_unset, &ft_env, &ft_exit};
-	builtins[8] = {"echo", "cd", "pwd", "export", "unset", "env", "exit", NULL};
 	i = -1;
 	if (!cmd)
 		return (NULL);
