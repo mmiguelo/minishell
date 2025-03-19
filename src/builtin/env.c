@@ -6,24 +6,24 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:21:45 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/18 19:20:27 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/19 11:27:56 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	when_no_env(t_shell *shell)
+void	**when_no_env(char **envp)
 {
 	char	cwd[1024];
 
-	shell->envp = ft_calloc(1, sizeof(char **));
-	shell->envp[0] = ft_calloc(4, sizeof(char *));
-	if (!shell->envp)
+	*envp = ft_calloc(4, sizeof(char *));
+	if (!envp)
 		return ;
-	shell->envp[0][0] = ft_strdup_free(ft_strdup("PWD="),
+	(*envp)[0] = ft_strdup_free(ft_strdup("PWD="),
 			ft_strdup(getcwd(cwd, sizeof(cwd))));
-	shell->envp[0][1] = ft_strdup("SHLVL=1");
-	shell->envp[0][2] = ft_strdup("_=/usr/bin/env");
+	(*envp)[1] = ft_strdup("SHLVL=1");
+	(*envp)[2] = ft_strdup("_=/usr/bin/env");
+	(*envp)[3] = NULL;
 }
 
 int	ft_parse_env(char *arg)

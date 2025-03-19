@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:11:42 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/19 09:13:45 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/19 11:07:00 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_shell
 {
 	char		***envp;
 	char		**cmd;
-	char		
+	char		***export;
 }				t_shell;
 
 //function pointer type for builtins
