@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:18:53 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/18 19:27:48 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/19 00:33:43 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	validate_var(char *var)
 	int	i;
 
 	i = 0;
-	if (var[i] != '_' && !ft_isalpha(var[i]))
+	if (!var || (var[i] != '_' && !ft_isalpha(var[i])))
 		return (0);
 	while (++i)
 	{
