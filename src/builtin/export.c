@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/20 10:42:17 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/20 10:45:14 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,6 @@ int	check_if_var_is_in_env(char *arg)
 	return (-1);
 }
 
-void	ft_print_export(t_bt *shell)
-{
-	
-}
-
 void	sort_export(t_bt shell)
 {
 	int		i;
@@ -95,6 +90,21 @@ void	sort_export(t_bt shell)
 		}
 	}
 	return (new_export);
+}
+
+void	ft_print_export(t_bt *shell)
+{
+	int	i;
+
+	i = 0;
+	shell->envp = sort_export(shell);
+	while (shell->envp[i] != NULL)
+	{
+		ft_putstr_fd("declare -x ", 1);
+		ft_putstr_fd(shell->envp[i], 1);
+		ft_putstr_fd("\n", 1);
+		i++;
+	}
 }
 
 int	ft_export(char **args, t_bt *shell)
