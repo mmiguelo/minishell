@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 11:26:03 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/19 11:59:51 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/20 10:42:47 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,44 +39,11 @@ char 	**init_env(char **envp)
 	return (new_env);
 }
 
-char	**init_export(char **envp)
-{
-	char	**new_export;
-	int		i;
-	int		j;
-	char	*temp;
-
-	i = -1;
-	new_export = init_env(envp);
-	if (!new_export)
-		return (NULL);
-	while (new_export[++i] != NULL)
-	{
-		j = i;
-		while (new_export[++j] != NULL)
-		{
-			if (ft_strcmp(new_export[i], new_export[j]) > 0)
-			{
-				temp = new_export[i];
-				new_export[i] = new_export[j];
-				new_export[j] = temp;
-			}
-		}
-	}
-	return (new_export);
-}
-
-void	ft_init(t_shell *shell, char **envp)
+void	ft_init(t_bt *shell, char **envp)
 {
 	if (!envp || !envp[0])
-	{
 		shell->envp = when_no_env(shell, envp);
-		shell->export = when_no_env(shell, envp);
-	}
 	else
-	{
 		shell->envp = init_env(envp);
-		shell->export = init_export(envp);
-	}
 	shell->cmd = NULL;
 }

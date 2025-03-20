@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:19:50 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/17 13:12:00 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/20 10:41:45 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	ft_is_n(char *arg)
 	return (1);
 }
 
-int	ft_echo(char **args, t_shell *shell)
+int	ft_echo(char **args, t_bt *shell)
 {
 	int	i;
 	int	n_flag;

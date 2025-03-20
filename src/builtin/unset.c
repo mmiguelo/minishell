@@ -6,13 +6,13 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:21:06 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/18 19:22:20 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/20 10:42:30 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_erase_var(char *var, t_shell *shell)
+void	ft_erase_var(char *var, t_bt *shell)
 {
 	int	i;
 
@@ -29,7 +29,7 @@ void	ft_erase_var(char *var, t_shell *shell)
 	}
 }
 
-int	ft_unset(char **args, t_shell *shell)
+int	ft_unset(char **args, t_bt *shell)
 {
 	int		i;
 	char	*error;

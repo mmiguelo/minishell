@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:21:45 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/19 11:27:56 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/20 10:42:02 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_parse_env(char *arg)
 	}
 }
 
-int	ft_env(char **args, t_shell *shell)
+int	ft_env(char **args, t_bt *shell)
 {
 	int	i;
 

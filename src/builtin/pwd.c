@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:13 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/17 13:15:04 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/20 10:42:25 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	parse_pwd(char *arg)
 	return (0);
 }
 
-int	ft_pwd(char **args, t_shell *shell)
+int	ft_pwd(char **args, t_bt *shell)
 {
 	char	cwd[1024];
 

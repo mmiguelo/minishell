@@ -6,13 +6,13 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:01 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/17 13:14:07 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/20 10:42:04 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_exit(char **args, t_shell *shell)
+int	ft_exit(char **args, t_bt *shell)
 {
 	(void)shell;
 	(void)args;

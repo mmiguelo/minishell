@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:19:11 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/18 19:09:06 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/20 10:42:53 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_signals(void)
 	signal(SIGTSTP, SIG_IGN);
 }
 
-void	ft_minishell(t_shell *shell, char **envp)
+void	ft_minishell(t_bt *shell, char **envp)
 {
 	t_builtin	func;
 	char		*token;
@@ -64,12 +64,12 @@ void	ft_minishell(t_shell *shell, char **envp)
 
 int	main(int argc, char **argv, char **envp)
 {
-	t_shell	shell;
+	t_bt	shell;
 
 	(void)argc;
 	(void)argv;
 	ft_signals();
-	ft_memset(&shell, 0, sizeof(t_shell));
+	ft_memset(&shell, 0, sizeof(t_bt));
 	ft_minishell(&shell, envp);
 	return (0);
 }
