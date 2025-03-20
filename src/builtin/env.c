@@ -6,13 +6,13 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:21:45 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/20 10:42:02 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:08:47 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	**when_no_env(char **envp)
+/* void	**when_no_env(char **envp)
 {
 	char	cwd[1024];
 
@@ -24,9 +24,9 @@ void	**when_no_env(char **envp)
 	(*envp)[1] = ft_strdup("SHLVL=1");
 	(*envp)[2] = ft_strdup("_=/usr/bin/env");
 	(*envp)[3] = NULL;
-}
+} */
 
-int	ft_parse_env(char *arg)
+int	env_error(char *arg)
 {
 	if (!arg)
 		return (0);
@@ -34,12 +34,12 @@ int	ft_parse_env(char *arg)
 	{
 		ft_printf("env: illegal option -- %c\n", arg[1]);
 		ft_printf("Try 'env --help' for more information.\n");
-		return (0);
+		return (125);
 	}
 	else
 	{
 		ft_printf("env: '%s': No such file or directory\n", arg);
-		return (125);
+		return (127);
 	}
 }
 
@@ -52,12 +52,12 @@ int	ft_env(char **args, t_bt *shell)
 	if (!shell->envp)
 		return (0);
 	if (args[1])
-		ft_parse_env(args[1]);
+		env_error(args[1]);
 	else
 	{
-		while ((*shell->envp)[i])
+		while (shell->envp[i])
 		{
-			ft_printf("%s\n", (*shell->envp)[i]);
+			ft_printf("%s\n", shell->envp[i]);
 			i++;
 		}
 	}

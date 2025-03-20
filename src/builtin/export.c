@@ -6,12 +6,11 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/20 10:45:14 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:14:06 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
 
 /* Checking for Arguments
 If args[1] == NULL, list all exported variables.
@@ -23,60 +22,33 @@ Adding or Updating an Environment Variable
 4. If it exists, update it.
 5. If not, add it to the list. */
 
-int	check_for_value(char *arg)
+/* void	handle_export_var(char *arg, t_bt *shell)
 {
-	int i;
 	
+} */
+
+int	check_export_var(char *arg)
+{
+	int		i;
+	char	*var;
+	char	*value;
+
 	i = 0;
-	while (arg[i] != '\0')
-	{
-		if (arg[i] == '=')
-			return (i);
-		i++;
-	}
+	var = get_export_var(arg);
+	value = get_export_value(arg);
+	ft_printf("var: %s\n", var);
+	ft_printf("value: %s\n", value);
 	return (0);
 }
 
-int	validate_var(char *var)
-{
-	int	i;
-
-	i = 0;
-	if (!var || (var[i] != '_' && !ft_isalpha(var[i])))
-		return (0);
-	while (++i)
-	{
-		if (var[i] != '_' && !ft_isalnum(var[i]))
-			return (0);
-	}
-	return (i);
-}
-
-int	check_if_var_is_in_env(char *arg)
-{
-	int	i;
-	int	len;
-	
-	i = 0;
-	len = ft_strlen(arg);
-	while (envp[i] != NULL)
-	{
-		if (ft_strncmp(envp[i], arg, len) == 0)
-			return (i);
-		i++;
-	}
-	return (-1);
-}
-
-void	sort_export(t_bt shell)
+void	sort_export(char **new_export)
 {
 	int		i;
 	int		j;
 	char	*temp;
 
 	i = -1;
-	temp = envp;
-	while (temp[++i] != NULL)
+	while (new_export[++i] != NULL)
 	{
 		j = i;
 		while (new_export[++j] != NULL)
@@ -89,33 +61,41 @@ void	sort_export(t_bt shell)
 			}
 		}
 	}
-	return (new_export);
 }
 
-void	ft_print_export(t_bt *shell)
+int	ft_print_export(t_bt *shell)
 {
-	int	i;
+	int		i;
+	char	**new_export;
 
 	i = 0;
-	shell->envp = sort_export(shell);
+	new_export = ft_calloc(ft_arrlen(shell->envp) + 1, sizeof(char *));
+	if (!new_export)
+		return 0;
 	while (shell->envp[i] != NULL)
 	{
-		ft_putstr_fd("declare -x ", 1);
-		ft_putstr_fd(shell->envp[i], 1);
-		ft_putstr_fd("\n", 1);
+		new_export[i] = ft_strdup(shell->envp[i]);
 		i++;
 	}
+	sort_export(new_export);
+	i = 0;
+	while (new_export[i] != NULL)
+	{
+		ft_putstr_fd("declare -x ", 1);
+		ft_putstr_fd(new_export[i], 1);
+		ft_putstr_fd("\n", 1);
+		free(new_export[i]);
+		i++;
+	}
+	free(new_export);
+	return (0);
 }
 
 int	ft_export(char **args, t_bt *shell)
 {
-	if (ft_strncmp(args[0], "export", 7) == 0)
-		ft_print_export(shell);
-	else
-	{
-		if (check_for_value(args[1]))
-			ft_add_var(args[1], shell);
-		else
-			
-	}
+	if (!args[1])
+		return (ft_print_export(shell));
+	if (args[1] && export_error(args[1]))
+		return (1);
+	return (check_export_var(args[1]));
 }

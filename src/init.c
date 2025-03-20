@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 11:26:03 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/20 10:47:20 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:14:52 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,6 @@ char	**init_env(char **envp)
 
 void	ft_init(t_bt *shell, char **envp)
 {
-	if (!envp || !envp[0])
-		shell->envp = when_no_env(shell, envp);
-	else
-		shell->envp = init_env(envp);
+	shell->envp = init_env(envp);
 	shell->cmd = NULL;
 }

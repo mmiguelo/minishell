@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:18:53 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/20 10:41:18 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/20 12:14:40 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	get_env_line(char *var, t_bt *shell)
 	i = -1;
 	if (!shell->envp)
 		return (-1);
-	env = *(shell->envp);
+	env = shell->envp;
 	while (env[++i])
 	{
 		if (ft_strncmp(env[i], var, len) == 0

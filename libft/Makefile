@@ -26,7 +26,8 @@ RM = rm -f
 #                                    FILES                                     #
 #==============================================================================#
 
-SRCS =	ft_bzero.c
+SRCS = ft_arrlen.c
+SRCS +=	ft_bzero.c
 SRCS +=	ft_atoi.c
 SRCS += ft_atol.c
 SRCS +=	ft_calloc.c

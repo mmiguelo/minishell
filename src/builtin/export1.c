@@ -12,3 +12,75 @@
 
 #include "minishell.h"
 
+char	*get_export_value(char *arg)
+{
+	int		i;
+	char	*value;
+
+	i = 0;
+	while (arg[i] && arg[i] != '=')
+		i++;
+	value = ft_substr(arg, i + 1, ft_strlen(arg) - i - 1);
+	return (value);
+}
+
+char	*get_export_var(char *arg)
+{
+	int		i;
+	char	*var;
+
+	i = 0;
+	while (arg[i] && arg[i] != '=')
+	{
+		if (arg[i] == '+' && arg[i + 1] == '=')
+			break ;
+		i++;
+	}
+	var = ft_substr(arg, 0, i);
+	return (var);
+}
+
+int	check_for_value(char *arg)
+{
+	int	i;
+
+	i = 0;
+	while (arg[i] != '\0')
+	{
+		if (arg[i] == '=')
+			return (i);
+		i++;
+	}
+	return (0);
+}
+
+int	validate_var(char *var)
+{
+	int	i;
+
+	i = 0;
+	if (!var || (var[i] != '_' && !ft_isalpha(var[i])))
+		return (0);
+	while (++i)
+	{
+		if (var[i] != '_' && !ft_isalnum(var[i]))
+			return (0);
+	}
+	return (i);
+}
+
+/* int	check_if_var_is_in_env(char *arg, t_bt shell)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	len = ft_strlen(arg);
+	while ( != NULL)
+	{
+		if (ft_strncmp(envp[i], arg, len) == 0)
+			return (i);
+		i++;
+	}
+	return (-1);
+} */

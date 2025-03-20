@@ -46,6 +46,7 @@ int		ft_lstsize(t_list *lst);
 #                                 STRINGS                                      #
 #=============================================================================*/
 
+int		ft_arrlen(char **str);
 size_t	ft_strlcat(char *dst, char *src, size_t size);
 size_t	ft_strlen(const char *str);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
