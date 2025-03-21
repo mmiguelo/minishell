@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:13 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/20 10:42:25 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/21 11:43:22 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	parse_pwd(char *arg)
 
 int	ft_pwd(char **args, t_bt *shell)
 {
-	char	cwd[1024];
+	char	cwd[4096];
 
 	(void)shell;
 	if (args[1] && parse_pwd(args[1]))
@@ -37,6 +37,7 @@ int	ft_pwd(char **args, t_bt *shell)
 	}
 	else
 	{
+		//TODO: implementar o return code para 1
 		ft_printf("pwd: error retrieving current directory\n");
 		return (1);
 	}

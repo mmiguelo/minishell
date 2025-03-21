@@ -17,9 +17,9 @@ char	*get_export_value(char *arg)
 	int		i;
 	char	*value;
 
-	i = 0;
-	while (arg[i] && arg[i] != '=')
-		i++;
+	i = check_for_value(arg);
+	if (i == 0)
+		return (NULL);
 	value = ft_substr(arg, i + 1, ft_strlen(arg) - i - 1);
 	return (value);
 }
@@ -37,7 +37,7 @@ char	*get_export_var(char *arg)
 		i++;
 	}
 	var = ft_substr(arg, 0, i);
-	return (var);
+	return (ft_strdup(var));
 }
 
 int	check_for_value(char *arg)
@@ -59,7 +59,7 @@ int	validate_var(char *var)
 	int	i;
 
 	i = 0;
-	if (!var || (var[i] != '_' && !ft_isalpha(var[i])))
+	if (var[i] != '_' && !ft_isalpha(var[i]))
 		return (0);
 	while (++i)
 	{

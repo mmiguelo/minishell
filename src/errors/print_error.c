@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:14:30 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/20 14:48:16 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/21 16:02:55 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	export_error(char *arg)
 		if (arg[1])
 			return (ft_printf("minishell: export -%c: invalid option\n",
 					arg[1]), 2);
-		return (ft_printf("minishell: export: `-': not a valid identifier\n"),
-			1);
+		return (ft_printf("minishell: export: `%s': not a valid identifier\n",
+			arg), 1);
 	}
 	return (0);
 }

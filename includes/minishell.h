@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:11:42 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/20 14:44:16 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/21 16:09:15 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,22 @@ int			ft_cd(char **args, t_bt *shell);
 int			ft_pwd(char **args, t_bt *shell);
 int			ft_export(char **args, t_bt *shell);
 int			ft_unset(char **args, t_bt *shell);
+int			ft_exit(char **args, t_bt *shell);
 int			ft_env(char **args, t_bt *shell);
 int			get_env_line(char *var, t_bt *shell);
-void		ft_erase_var(char *var, t_bt *shell);
 int			validate_var(char *var);
-void		add_var_to_export(char *var, t_bt *shell);
-char		**init_env(char **envp);
-void		when_no_env(t_bt *shell);
-int			ft_exit(char **args, t_bt *shell);
-int			check_if_var_is_in_env(char *arg, t_bt shell);
-void		sort_export(char **new_export);
 int			export_error(char *arg);
 int			env_error(char *arg);
-int			check_export_var(char *arg);
+int			check_if_var_is_in_env(char *arg, t_bt shell);
+int			check_export_var(char **arg, t_bt *shell);
+int			check_for_value(char *arg);
 char		*get_export_var(char *arg);
 char		*get_export_value(char *arg);
+char		**init_env(char **envp);
+void		sort_export(char **new_export);
+void		when_no_env(t_bt *shell);
+void		ft_erase_var(char *var, t_bt *shell);
+void		handle_export_var(char **arg, t_bt *shell);
 
 /*=============================================================================#
 #                               UTILS                                          #

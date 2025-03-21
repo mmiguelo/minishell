@@ -6,7 +6,7 @@
 #    By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/13 12:12:18 by mmiguelo          #+#    #+#              #
-#    Updated: 2025/03/20 14:51:33 by mmiguelo         ###   ########.fr        #
+#    Updated: 2025/03/21 15:08:22 by mmiguelo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ RM = rm -rf
 VAL = valgrind --suppressions=readline.supp --leak-check=full --show-leak-kinds=all --track-origins=yes --errors-for-leak-kinds=definite
 
 GENERAL = main.c init.c free.c
-BUILTIN = builtin_utils.c cd.c echo.c env.c exit.c export.c export1.c pwd.c unset.c
+BUILTIN = builtin_utils.c cd.c echo.c env.c exit.c export.c export1.c export2.c pwd.c unset.c
 ERRORS = print_error.c
 
 NAME = minishell
