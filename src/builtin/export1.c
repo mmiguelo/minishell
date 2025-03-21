@@ -61,7 +61,7 @@ int	validate_var(char *var)
 	i = 0;
 	if (var[i] != '_' && !ft_isalpha(var[i]))
 		return (0);
-	while (++i)
+	while (var[++i])
 	{
 		if (var[i] != '_' && !ft_isalnum(var[i]))
 			return (0);

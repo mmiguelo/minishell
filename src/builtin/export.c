@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/21 16:14:31 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/21 16:38:27 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,14 @@ int	check_export_var(char **arg, t_bt *shell)
 	{
 		var = get_export_var(arg[i]);
 		value = get_export_value(arg[i]);
-/* 		if (validate_var(var))
+		if (validate_var(var))
+		{
 			handle_export_var(arg, shell);
+			ft_printf("var: %s\n", var);
+			ft_printf("value: %s\n", value);
+		}
 		else
-			export_error(arg[i]); */
+			print_invalid_var(var);
 		free(var);
 		if (value)
 			free(value);

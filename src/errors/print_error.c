@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:14:30 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/21 16:02:55 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/21 16:41:48 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,9 @@ int	export_error(char *arg)
 			arg), 1);
 	}
 	return (0);
+}
+
+void	print_invalid_var(char *var)
+{
+	ft_printf("minishell: export: `%s': not a valid identifier\n", var);
 }

@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:11:42 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/21 16:09:15 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/21 16:36:13 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void		sort_export(char **new_export);
 void		when_no_env(t_bt *shell);
 void		ft_erase_var(char *var, t_bt *shell);
 void		handle_export_var(char **arg, t_bt *shell);
+void		print_invalid_var(char *var);
 
 /*=============================================================================#
 #                               UTILS                                          #
