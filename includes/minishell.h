@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:11:42 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/21 16:36:13 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/21 17:04:00 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int			validate_var(char *var);
 int			export_error(char *arg);
 int			env_error(char *arg);
 int			check_if_var_is_in_env(char *arg, t_bt shell);
-int			check_export_var(char **arg, t_bt *shell);
+int			check_export_var(char **args, t_bt *shell);
 int			check_for_value(char *arg);
 char		*get_export_var(char *arg);
 char		*get_export_value(char *arg);
@@ -54,7 +54,7 @@ char		**init_env(char **envp);
 void		sort_export(char **new_export);
 void		when_no_env(t_bt *shell);
 void		ft_erase_var(char *var, t_bt *shell);
-void		handle_export_var(char **arg, t_bt *shell);
+void		handle_export_var(char *arg, t_bt *shell);
 void		print_invalid_var(char *var);
 
 /*=============================================================================#
