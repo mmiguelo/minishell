@@ -6,13 +6,13 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/21 16:38:27 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/21 17:03:43 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	handle_export_var(char **arg, t_bt *shell)
+void	handle_export_var(char *arg, t_bt *shell)
 {
 	//TODO: check if variable already exists
 	//TODO: if it exists, update it
@@ -25,7 +25,7 @@ void	handle_export_var(char **arg, t_bt *shell)
 	(void)shell;
 }
 
-int	check_export_var(char **arg, t_bt *shell)
+int	check_export_var(char **args, t_bt *shell)
 {
 	int		i;
 	char	*var;
@@ -33,13 +33,13 @@ int	check_export_var(char **arg, t_bt *shell)
 
 	(void)shell;
 	i = 0;
-	while (arg[++i])
+	while (args[++i])
 	{
-		var = get_export_var(arg[i]);
-		value = get_export_value(arg[i]);
+		var = get_export_var(args[i]);
+		value = get_export_value(args[i]);
 		if (validate_var(var))
 		{
-			handle_export_var(arg, shell);
+			handle_export_var(args[i], shell);
 			ft_printf("var: %s\n", var);
 			ft_printf("value: %s\n", value);
 		}
