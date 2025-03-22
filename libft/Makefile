@@ -38,6 +38,7 @@ SRCS +=	ft_isdigit.c
 SRCS +=	ft_islower.c
 SRCS += ft_isnum.c
 SRCS +=	ft_isprint.c
+SRCS += ft_isupper.c
 SRCS +=	ft_itoa.c
 SRCS +=	ft_memchr.c
 SRCS +=	ft_memcmp.c
