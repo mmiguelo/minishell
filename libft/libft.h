@@ -96,6 +96,7 @@ int		ft_isdigit(int c);
 int		ft_islower(char *str);
 int		ft_isnum(char *str);
 int		ft_isprint(int c);
+int		ft_isupper(char *str);
 
 /*=============================================================================#
 #                               CONVERTERS                                     #
