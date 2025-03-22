@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/21 17:12:56 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/22 16:26:43 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	handle_export_var(char *arg, t_bt *shell)
 {
+	if (ft_strnstr(arg, "+=", ft_strlen(arg)))
+		
 	//TODO: check if variable already exists
 	//TODO: if it exists, update it
 	//TODO: if it doesn't exist, add it to the list

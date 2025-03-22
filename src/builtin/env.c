@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:21:45 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/21 17:13:51 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/22 16:28:06 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 	(*envp)[3] = NULL;
 } */
 
-int	env_error(char *arg)
+static int	env_error(char *arg)
 {
 	if (!arg)
 		return (0);
