@@ -12,6 +12,12 @@
 
 #include "libft.h"
 
+/**
+ * @brief Check if a string is a number
+ * 
+ * @param str 
+ * @return int 
+ */
 int	ft_isnum(char *str)
 {
 	int	i;
