@@ -89,6 +89,7 @@ void	ft_putstr_fd(char *s, int fd);
 #                               CHECKERS                                       #
 #=============================================================================*/
 
+int		ft_isnum(char *str);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
