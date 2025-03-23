@@ -69,18 +69,18 @@ int	validate_var(char *var)
 	return (i);
 }
 
-/* int	check_if_var_is_in_env(char *arg, t_bt shell)
+int	check_if_var_is_in_env(char *arg, t_bt *shell)
 {
 	int	i;
 	int	len;
 
 	i = 0;
 	len = ft_strlen(arg);
-	while ( != NULL)
+	while (shell->envp[i] != NULL)
 	{
-		if (ft_strncmp(envp[i], arg, len) == 0)
+		if (ft_strncmp(shell->envp[i], arg, len) == 0)
 			return (i);
 		i++;
 	}
 	return (-1);
-} */
+}

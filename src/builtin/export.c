@@ -6,16 +6,18 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/22 16:26:43 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/23 00:52:23 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	handle_export_var(char *arg, t_bt *shell)
+void	handle_export_var(char **arg, t_bt *shell, char *var, char *value)
 {
-	if (ft_strnstr(arg, "+=", ft_strlen(arg)))
-		
+	/* 	if (ft_strchr(*arg, '='))
+			update_var(arg, shell);
+		else if (!value)
+			add_var_in_env(arg, shell);*/
 	//TODO: check if variable already exists
 	//TODO: if it exists, update it
 	//TODO: if it doesn't exist, add it to the list
@@ -25,6 +27,8 @@ void	handle_export_var(char *arg, t_bt *shell)
 	//TODO: if there is, append the value to the variable
 	(void)arg;
 	(void)shell;
+	(void)var;
+	(void)value;
 }
 
 int	check_export_var(char **args, t_bt *shell)
@@ -41,7 +45,7 @@ int	check_export_var(char **args, t_bt *shell)
 		value = get_export_value(args[i]);
 		if (validate_var(var))
 		{
-			handle_export_var(args[i], shell);
+			handle_export_var(&args[i], shell, var, value);
 			ft_printf("var: %s\n", var);
 			ft_printf("value: %s\n", value);
 		}
@@ -84,7 +88,7 @@ int	ft_print_export(t_bt *shell)
 	i = 0;
 	new_export = ft_calloc(ft_arrlen(shell->envp) + 1, sizeof(char *));
 	if (!new_export)
-		return 0;
+		return (0);
 	while (shell->envp[i] != NULL)
 	{
 		new_export[i] = ft_strdup(shell->envp[i]);
@@ -106,8 +110,8 @@ int	ft_print_export(t_bt *shell)
 
 int	ft_export(char **args, t_bt *shell)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	if (!args[1])
 		return (ft_print_export(shell));
