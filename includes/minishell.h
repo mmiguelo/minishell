@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:11:42 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/22 16:29:00 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/23 00:36:18 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ typedef int	(*t_builtin)(char **, t_bt *);
 #=============================================================================*/
 
 t_builtin	ft_isbuiltin(char *cmd, t_bt *shell);
-//echo
 int			ft_echo(char **args, t_bt *shell);
 int			ft_cd(char **args, t_bt *shell);
 int			ft_pwd(char **args, t_bt *shell);
@@ -43,7 +42,7 @@ int			ft_exit(char **args, t_bt *shell);
 int			ft_env(char **args, t_bt *shell);
 int			get_env_line(char *var, t_bt *shell);
 int			export_error(char *arg);
-int			check_if_var_is_in_env(char *arg, t_bt shell);
+int			check_if_var_is_in_env(char *arg, t_bt *shell);
 int			validate_var(char *var);
 int			ft_export(char **args, t_bt *shell);
 int			check_for_value(char *arg);
@@ -54,7 +53,7 @@ char		**init_env(char **envp);
 void		sort_export(char **new_export);
 void		when_no_env(t_bt *shell);
 void		ft_erase_var(char *var, t_bt *shell);
-void		handle_export_var(char *arg, t_bt *shell);
+void		handle_export_var(char **arg, t_bt *shell, char *var, char *value);
 void		print_invalid_var(char *var);
 
 /*=============================================================================#
@@ -70,7 +69,8 @@ void		sigint_handler(int sig);
 #                      	         FREE                                          #
 #=============================================================================*/
 
-void		free_envp(t_bt *shell, int i);
+int			free_envp(t_bt *shell, int i);
+int			free_cmd(t_bt *shell, int i);
 int			print_msg_error(char *error);
 
 #endif
