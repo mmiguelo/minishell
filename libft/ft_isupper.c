@@ -16,7 +16,7 @@
  * @brief Check if a string only contains uppercase letters
  * 
  * @param str The string to be checked
- * @return int 1 if the character is an uppercase letter, 0 otherwise
+ * @return int 1 if the string only has uppercase letters, 0 otherwise
  */
 int	ft_isupper(char *str)
 {
