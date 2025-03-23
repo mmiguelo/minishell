@@ -13,10 +13,10 @@
 #include "libft.h"
 
 /**
- * @brief Check if a string is a number
+ * @brief Check if a string only contains numeric letters
  * 
- * @param str 
- * @return int 
+ * @param str The string to be checked
+ * @return int 1 if the str has only numeric letters, 0 otherwise
  */
 int	ft_isnum(char *str)
 {
