@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:11:42 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/23 00:36:18 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/25 12:30:01 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "../libft/libft.h"
+
+#define NO_NUMERIC "minishell: exit: %s: numeric argument required\n"
 
 typedef struct s_bt
 {
@@ -69,8 +71,9 @@ void		sigint_handler(int sig);
 #                      	         FREE                                          #
 #=============================================================================*/
 
-int			free_envp(t_bt *shell, int i);
-int			free_cmd(t_bt *shell, int i);
+void		ft_kill(t_bt **shell, int status);
+int			free_envp(t_bt **shell, int i);
+int			free_cmd(t_bt **shell, int i);
 int			print_msg_error(char *error);
 
 #endif
