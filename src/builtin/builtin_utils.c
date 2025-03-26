@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:18:53 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/26 13:06:06 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:15:33 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int	get_env_line(char *var, t_bt *shell)
  * 
  * This function compares the given command (`cmd`) with a predefined
  * list of shell built-in commands.
- * If a match is found, it returns a pointer to the corresponding built-in function.
+ * If a match is found, it returns a pointer to the corresponding built-in
+ * function.
  * Otherwise, it returns `NULL`, indicating that the command is not a built-in.
  * 
  * @param cmd The command string to check.
