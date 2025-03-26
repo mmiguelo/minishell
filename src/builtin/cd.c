@@ -6,18 +6,22 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:19:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/26 13:06:35 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/26 13:44:46 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 /**
- * @brief 
+ * @brief Updates or adds an environment variable in the shell's environment.
  * 
- * @param shell 
- * @param var 
- * @param path 
+ * This function searches for the specified environment variable (`var`) in the shell's
+ * environment (`shell->envp`). If the variable exists, it updates its value to `path`.
+ * If it does not exist, it adds a new entry to the environment.
+ * 
+ * @param shell A pointer to the shell structure containing the environment variables.
+ * @param var The name of the environment variable to update or add.
+ * @param path The new value to assign to the environment variable.
  */
 void	update_env(t_bt *shell, const char *var, char *path)
 {
@@ -43,6 +47,21 @@ void	update_env(t_bt *shell, const char *var, char *path)
 	}
 }
 
+/**
+ * @brief Changes the current working directory.
+ * 
+ * This function implements the `cd` built-in command, handling different cases:
+ * - No arguments: changes to the `HOME` directory.
+ * - `cd -`: switches to the previous directory (`OLDPWD`) and prints it.
+ * - Too many arguments: prints an error message.
+ * - Invalid option (`-x`): prints an error message.
+ * 
+ * If the directory change is successful, it updates the `PWD` and `OLDPWD` environment variables.
+ * 
+ * @param args Array of command arguments (`args[0]` is "cd", `args[1]` is the target path).
+ * @param shell Pointer to the shell structure containing environment variables.
+ * @return int 0 on success, 1 on failure, 2 if an invalid option is provided.
+ */
 int	ft_cd(char **args, t_bt *shell)
 {
 	char	cwd[1024];
