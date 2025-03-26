@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/26 14:33:48 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:36:15 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,15 +111,17 @@ void	sort_export(char **new_export)
 /**
  * @brief Prints all the environment variables with the `declare -x` prefix.
  * 
- * This function iterates over the environment variables stored in the `shell->envp`
- * array, makes a copy of each variable, sorts them, and then prints them to the standard 
- * output with the format `declare -x <variable>=<value>`. It mimics the output of the 
- * `export` command in Bash, showing each variable with the `declare -x` prefix.
+ * This function iterates over the environment variables stored in the
+ * `shell->envp` array, makes a copy of each variable, sorts them, and then
+ * prints them to the standard output with the format `declare -x
+ * <variable>=<value>`. It mimics the output of the `export` command in Bash,
+ * showing each variable with the `declare -x` prefix.
  * 
- * @param shell Pointer to the shell structure. It contains the `envp` array, which
- *               holds the environment variables.
- * @return int Returns `0` upon successful completion. If an error occurs during memory
- *               allocation or printing, it will return `0` (indicating failure in some cases).
+ * @param shell Pointer to the shell structure. It contains the `envp` array,
+ * which holds the environment variables.
+ * @return int Returns `0` upon successful completion. If an error occurs
+ * during memory allocation or printing, it will return `0` (indicating
+ * failure in some cases).
  */
 int	ft_print_export(t_bt *shell)
 {
