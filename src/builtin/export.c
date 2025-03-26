@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/26 13:54:44 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/26 13:58:26 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,20 @@ void	handle_export_var(char **arg, t_bt *shell, char *var, char *value)
 	(void)value;
 }
 
+/**
+ * @brief Processes and validates environment variable assignments from the export command.
+ * 
+ * This function processes each argument passed to the `export` command, separating
+ * the variable names and their values. It validates the variables, and if valid, 
+ * it calls a handler function to perform the export action. If a variable is invalid, 
+ * it prints an error message. The function also prints the variable and its value for debugging purposes.
+ * 
+ * @param args Array of strings representing the arguments passed to the `export` command. 
+ *              Each argument can be a variable assignment of the form `VAR=VALUE`.
+ * @param shell Pointer to the shell structure, which contains the environment variables and other data.
+ * @return int Returns `0` upon successful completion. If an error occurs (such as an invalid variable),
+ *              it prints an error message and returns `0`.
+ */
 int	check_export_var(char **args, t_bt *shell)
 {
 	int		i;
@@ -58,6 +72,17 @@ int	check_export_var(char **args, t_bt *shell)
 	return (0);
 }
 
+/**
+ * @brief Sorts an array of strings in lexicographical order.
+ * 
+ * This function sorts an array of strings (environment variables in this case) in
+ * ascending lexicographical order using a simple bubble sort algorithm. It is used
+ * to sort the environment variables before printing them in the `ft_print_export` function,
+ * ensuring they are listed in alphabetical order.
+ * 
+ * @param new_export Array of strings (environment variables) to be sorted. Each string
+ *                    represents an environment variable in the format `VAR=VALUE`.
+ */
 void	sort_export(char **new_export)
 {
 	int		i;
@@ -80,6 +105,19 @@ void	sort_export(char **new_export)
 	}
 }
 
+/**
+ * @brief Prints all the environment variables with the `declare -x` prefix.
+ * 
+ * This function iterates over the environment variables stored in the `shell->envp`
+ * array, makes a copy of each variable, sorts them, and then prints them to the standard 
+ * output with the format `declare -x <variable>=<value>`. It mimics the output of the 
+ * `export` command in Bash, showing each variable with the `declare -x` prefix.
+ * 
+ * @param shell Pointer to the shell structure. It contains the `envp` array, which
+ *               holds the environment variables.
+ * @return int Returns `0` upon successful completion. If an error occurs during memory
+ *               allocation or printing, it will return `0` (indicating failure in some cases).
+ */
 int	ft_print_export(t_bt *shell)
 {
 	int		i;
