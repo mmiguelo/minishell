@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:21:06 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/26 14:05:16 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:30:01 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,17 @@ void	ft_erase_var(char *var, t_bt *shell)
 /**
  * @brief Removes environment variables from the shell's environment.
  * 
- * This function handles the `unset` built-in command, which removes one or more environment 
- * variables from the shell's environment. If an invalid option is provided, an error message 
- * is printed. If valid variables are provided, they are erased from the environment.
+ * This function handles the `unset` built-in command, which removes one or
+ * more environment variables from the shell's environment. If an invalid
+ * option is provided, an error message is printed. If valid variables are
+ * provided, they are erased from the environment.
  * 
- * @param args The arguments passed to the `unset` command, with the first argument being 
- *              the command itself, and the subsequent arguments being the environment 
- *              variables to be removed.
+ * @param args The arguments passed to the `unset` command, with the first
+ * argument being the command itself, and the subsequent arguments being the
+ * environment variables to be removed.
  * @param shell The shell structure containing the environment variables.
- * @return int Returns `0` on success, or an error code if an invalid option is provided.
+ * @return int Returns `0` on success, or an error code if an invalid option is
+ * provided.
  */
 int	ft_unset(char **args, t_bt *shell)
 {
