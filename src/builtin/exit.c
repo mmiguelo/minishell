@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:01 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/26 13:53:37 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:24:23 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	ft_kill(t_bt **shell, int status)
 		free_envp(shell, ft_arrlen((*shell)->envp));
 	if ((*shell)->cmd)
 		free_cmd(shell, ft_arrlen((*shell)->cmd));
-	//free((*shell));
 	*shell = NULL;
 	rl_clear_history();
 	exit(status);
@@ -43,17 +42,18 @@ void	ft_kill(t_bt **shell, int status)
  * 
  * The function implements the `exit` command for the shell. It checks the number
  * of arguments provided, verifies if the exit status is a valid number, and then
- * terminates the shell with the appropriate exit status. If there are too many arguments
- * or an invalid numeric value is provided, it prints an error message and terminates
- * the shell with a status of `2`.
+ * terminates the shell with the appropriate exit status. If there are too many
+ * arguments or an invalid numeric value is provided, it prints an error message
+ * and terminates the shell with a status of `2`.
  * 
  * @param args Array of command arguments. The first argument (`args[0]`) is 
- *               always `"exit"`, and the second argument (`args[1]`) is the 
- *               exit status (optional).
- * @param shell Pointer to the shell structure (used to clean up and exit the shell).
+ * always `"exit"`, and the second argument (`args[1]`) is the exit status
+ * (optional).
+ * @param shell Pointer to the shell structure (used to clean up and exit the
+ * shell).
  * @return int Returns `0` if the shell exit is handled successfully, or `1` for 
- *               incorrect argument input. The shell process will be terminated by 
- *               the `ft_kill` function.
+ * incorrect argument input. The shell process will be terminated by the
+ * `ft_kill` function.
  */
 int	ft_exit(char **args, t_bt *shell)
 {
