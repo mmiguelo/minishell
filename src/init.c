@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 11:26:03 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/21 10:56:06 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:08:57 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ char	**init_env(char **envp)
 	return (new_env);
 }
 
+/**
+ * @brief Initializes the shell structure with environment variables and command array.
+ * 
+ * @param shell A pointer to the `t_bt` structure that represents the shell.
+ * @param envp A pointer to the environment variables passed to the program (typically from `main`).
+ */
 void	ft_init(t_bt *shell, char **envp)
 {
 	shell->envp = init_env(envp);
