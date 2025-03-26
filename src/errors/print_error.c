@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:14:30 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/26 14:40:29 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:42:41 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,22 @@ int	print_msg_error(char *error)
 }
 
 /**
- * @brief 
+ * @brief Handles errors related to the `export` command when an invalid
+ * argument is provided.
  * 
- * @param arg 
- * @return int 
+ * This function checks the provided argument to the `export` command. If the
+ * argument starts with a dash ('-') and has invalid options or is not a valid
+ * identifier, an appropriate error message is printed.
+ * 
+ * @param arg The argument passed to the `export` command that is being
+ * validated.
+ * @return int Returns an error code:
+ * 
+ * - `2` if the argument is an invalid option (e.g., `-a`, `-1`).
+ * 
+ * - `1` if the argument is a valid identifier but not allowed for export.
+ * 
+ * - `0` if no error is found.
  */
 int	export_error(char *arg)
 {
