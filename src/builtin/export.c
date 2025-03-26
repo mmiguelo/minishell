@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/23 00:52:23 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/26 13:54:44 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,22 @@ int	ft_print_export(t_bt *shell)
 	return (0);
 }
 
+/**
+ * @brief Implements the `export` command for the shell.
+ * 
+ * This function handles the `export` command, which is used to set or display environment
+ * variables. If no arguments are provided, it will print the current environment variables.
+ * If an argument is provided, it checks if the argument has a valid format and sets the 
+ * environment variable accordingly.
+ * 
+ * @param args Array of arguments passed to the `export` command. The first element
+ *               (`args[0]`) is `"export"`, and subsequent elements are the variables
+ *               to be set in the environment.
+ * @param shell Pointer to the shell structure. It contains the environment variables 
+ *               (`envp`) and other shell-specific information.
+ * @return int Returns `1` if an error occurs, such as an invalid variable format,
+ *               or `0` if the command is processed successfully.
+ */
 int	ft_export(char **args, t_bt *shell)
 {
 	int	i;
