@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:19:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/26 14:17:48 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:18:29 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,14 @@
 /**
  * @brief Updates or adds an environment variable in the shell's environment.
  * 
- * This function searches for the specified environment variable (`var`) in the shell's
- * environment (`shell->envp`). If the variable exists, it updates its value to `path`.
+ * This function searches for the specified environment variable (`var`) in
+ * the shell's
+ * environment (`shell->envp`). If the variable exists, it updates its value
+ * to `path`.
  * If it does not exist, it adds a new entry to the environment.
  * 
- * @param shell A pointer to the shell structure containing the environment variables.
+ * @param shell A pointer to the shell structure containing the environment
+ * variables.
  * @param var The name of the environment variable to update or add.
  * @param path The new value to assign to the environment variable.
  */
