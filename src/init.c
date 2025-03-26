@@ -6,21 +6,27 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 11:26:03 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/26 14:13:55 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:14:38 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 /**
- * @brief Initializes a new environment array by duplicating the provided environment variables.
+ * @brief Initializes a new environment array by duplicating the provided
+ * environment variables.
  * 
- * This function takes an array of environment variables (`envp`) and creates a new array
- * of strings that duplicates the provided environment variables. It allocates memory for
- * the new environment array and copies each string from the original `envp` array into it.
+ * This function takes an array of environment variables (`envp`) and creates
+ * a new array
+ * of strings that duplicates the provided environment variables. It allocates
+ * memory for
+ * the new environment array and copies each string from the original `envp`
+ * array into it.
  * 
- * @param envp A pointer to the array of environment variables passed to the program.
- * @return char** A new array of environment variables, or `NULL` if memory allocation fails.
+ * @param envp A pointer to the array of environment variables passed to the
+ * program.
+ * @return char** A new array of environment variables, or `NULL` if memory
+ * allocation fails.
  */
 char	**init_env(char **envp)
 {
