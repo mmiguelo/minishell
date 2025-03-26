@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:11:42 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/25 13:55:59 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:11:57 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <readline/history.h>
 # include "../libft/libft.h"
 
-#define NO_NUMERIC "minishell: exit: %s: numeric argument required\n"
+# define NO_NUMERIC "minishell: exit: %s: numeric argument required\n"
 
 typedef struct s_bt
 {
