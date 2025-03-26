@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:19:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/26 13:44:46 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:17:48 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,11 @@ void	update_env(t_bt *shell, const char *var, char *path)
  * - Too many arguments: prints an error message.
  * - Invalid option (`-x`): prints an error message.
  * 
- * If the directory change is successful, it updates the `PWD` and `OLDPWD` environment variables.
+ * If the directory change is successful, it updates the `PWD` and `OLDPWD`
+ * environment variables.
  * 
- * @param args Array of command arguments (`args[0]` is "cd", `args[1]` is the target path).
+ * @param args Array of command arguments (`args[0]` is "cd", `args[1]` is the
+ * target path).
  * @param shell Pointer to the shell structure containing environment variables.
  * @return int 0 on success, 1 on failure, 2 if an invalid option is provided.
  */
@@ -66,13 +68,13 @@ int	ft_cd(char **args, t_bt *shell)
 {
 	char	cwd[1024];
 	char	*new_cwd;
-	
+
 	if (!shell->envp)
 		return (1);
 	if (getcwd(cwd, sizeof(cwd)) == NULL)
 		return (perror("minishell: cd"), 1);
 	if (args[1] && (args[1][0] == '-') && args[1][1])
-		return(ft_printf("minishell: cd: %s: invalid option\n", args[1]), 2);
+		return (ft_printf("minishell: cd: %s: invalid option\n", args[1]), 2);
 	if (args[2])
 		ft_printf("minishell: cd: too many arguments\n");
 	if (!args[1])
@@ -91,7 +93,8 @@ int	ft_cd(char **args, t_bt *shell)
 	else
 		new_cwd = args[1];
 	if (chdir(new_cwd) == -1)
-		return (ft_printf("minishell: cd: %s: %s\n", new_cwd, strerror(errno)), 1);
+		return (ft_printf("minishell: cd: %s: %s\n", new_cwd, strerror(errno)),
+			1);
 	update_env(shell, "OLDPWD", cwd);
 	update_env(shell, "PWD", new_cwd);
 	return (0);
