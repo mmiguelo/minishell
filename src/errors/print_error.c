@@ -6,12 +6,21 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:14:30 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/26 14:42:41 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:44:43 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+/**
+ * @brief Prints an error message based on the current `errno` value.
+ * 
+ * This function checks if `errno` is set, and if so, it prints the error
+ * message associated with the current value of `errno` using `perror`.
+ * 
+ * @param error The error message to be printed if `errno` is set.
+ * @return int Returns the status code (currently always `0`).
+ */
 int	print_msg_error(char *error)
 {
 	int	status_code;
