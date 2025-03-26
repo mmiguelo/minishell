@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:11:42 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/25 12:30:01 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/25 13:55:59 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct s_bt
 {
 	char		**envp;
 	char		**cmd;
+	char		*pwd;
+	char		*old_pwd;
 }				t_bt;
 
 //function pointer type for builtins
