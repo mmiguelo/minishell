@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:18:53 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/26 14:15:33 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:51:00 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
  * @return int The index of the variable in `shell->envp` if found.
  * 		   -1 if the variable is not found or invalid.
  */
-int	get_env_line(char *var, t_bt *shell)
+int	get_env_line(const char *var, t_bt *shell)
 {
 	int		i;
 	int		len;

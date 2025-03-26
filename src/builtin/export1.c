@@ -54,7 +54,7 @@ int	check_for_value(char *arg)
 	return (0);
 }
 
-int	validate_var(char *var)
+int	validate_var(const char *var)
 {
 	int	i;
 
