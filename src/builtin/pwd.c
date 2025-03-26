@@ -6,17 +6,29 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:13 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/26 14:00:28 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:02:52 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+/**
+ * @brief Parses the argument passed to the `pwd` command to check for invalid options.
+ * 
+ * This function checks if the argument passed to the `pwd` command is a redirection operator 
+ * (such as `>`, `>>`, or `|`), which are not supported by the `pwd` command. If an unsupported 
+ * argument is found, the function prints an error message and returns a failure code.
+ * 
+ * @param arg The argument passed to the `pwd` command.
+ * @return int Returns `1` if the argument is an invalid redirection operator or pipe. 
+ *              Returns `0` if the argument is valid.
+ */
 static int	parse_pwd(char *arg)
 {
 	if (ft_strcmp(arg, ">") == 0 || ft_strcmp (arg, ">>") == 0
 		|| ft_strcmp(arg, "|") == 0)
 	{
+		//TODO: alterar esta condicao
 		ft_printf("pipe or redirect\n");
 		return (1);
 	}
