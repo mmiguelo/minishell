@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:21:45 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/22 16:28:06 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/26 11:46:40 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static int	env_error(char *arg)
 	if (arg[0] == '-' && arg[1])
 	{
 		ft_printf("env: illegal option -- %c\n", arg[1]);
-		ft_printf("Try 'env --help' for more information.\n");
 		return (125);
 	}
 	else
