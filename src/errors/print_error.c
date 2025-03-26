@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:14:30 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/23 00:53:30 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:40:29 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ int	print_msg_error(char *error)
 	return (status_code);
 }
 
+/**
+ * @brief 
+ * 
+ * @param arg 
+ * @return int 
+ */
 int	export_error(char *arg)
 {
 	if (arg[0] == '-')
@@ -37,6 +43,16 @@ int	export_error(char *arg)
 	return (0);
 }
 
+/**
+ * @brief Prints an error message indicating that the provided variable name is
+ * not a valid identifier.
+ * 
+ * This function is used to print an error message when an invalid variable name
+ * is encountered during the export process. The error message indicates that the
+ * variable is not a valid identifier as per the shell's requirements.
+ * 
+ * @param var The name of the variable that is not valid.
+ */
 void	print_invalid_var(char *var)
 {
 	ft_printf("minishell: export: `%s': not a valid identifier\n", var);
