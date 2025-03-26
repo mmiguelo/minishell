@@ -6,12 +6,22 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:21:06 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/26 14:04:06 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:05:16 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+/**
+ * @brief Removes a specific variable from the shell's environment.
+ * 
+ * This function searches for a specified environment variable in the shell's environment 
+ * and removes it if found. After removing the variable, the remaining environment variables 
+ * are shifted to fill the gap, and the last element is set to `NULL`.
+ * 
+ * @param var The name of the environment variable to be removed.
+ * @param shell The shell structure containing the environment variables.
+ */
 void	ft_erase_var(char *var, t_bt *shell)
 {
 	int	i;
