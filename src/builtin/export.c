@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/26 14:32:59 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:33:48 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,13 @@ int	check_export_var(char **args, t_bt *shell)
 /**
  * @brief Sorts an array of strings in lexicographical order.
  * 
- * This function sorts an array of strings (environment variables in this case) in
- * ascending lexicographical order using a simple bubble sort algorithm. It is used
- * to sort the environment variables before printing them in the `ft_print_export` function,
- * ensuring they are listed in alphabetical order.
+ * This function sorts an array of strings (environment variables in this case)
+ * in ascending lexicographical order using a simple bubble sort algorithm. It is
+ * used to sort the environment variables before printing them in the
+ * `ft_print_export` function, ensuring they are listed in alphabetical order.
  * 
- * @param new_export Array of strings (environment variables) to be sorted. Each string
- *                    represents an environment variable in the format `VAR=VALUE`.
+ * @param new_export Array of strings (environment variables) to be sorted. Each
+ * string represents an environment variable in the format `VAR=VALUE`.
  */
 void	sort_export(char **new_export)
 {
