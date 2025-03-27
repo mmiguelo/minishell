@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:19:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/26 14:18:29 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/27 19:21:46 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,45 @@ void	update_env(t_bt *shell, const char *var, char *path)
 	}
 }
 
+int	save_cwd(char *cwd, size_t size)
+{
+	if (getcwd(cwd, size) == NULL)
+		return (errno);
+	return (0);
+}
+
+int	verify_change_dir(char *dir)
+{
+	if (dir == NULL)
+	{
+		ft_printf("minishell: cd: HOME not set\n");
+		return (1);
+	}
+	else if (chdir(dir) != 0)
+	{
+		ft_printf("minishell: cd: %s: %s\n", dir, strerror(errno));
+		errno = 0;
+		return (1);
+	}
+	return (0);
+}
+
+int	folder_back(t_bt *shell)
+{
+	char	*oldpwd;
+
+	oldpwd = get_env_value("OLDPWD", shell->envp);
+	if (oldpwd == NULL)
+	{
+		ft_printf("minishell: cd: OLDPWD not set\n");
+		return (1);
+	}
+	ft_printf("%s\n", oldpwd);
+	if (verify_change_dir(oldpwd) != 0)
+		return (1);
+	return (0);
+}
+
 /**
  * @brief Changes the current working directory.
  * 
@@ -72,33 +111,22 @@ int	ft_cd(char **args, t_bt *shell)
 	char	cwd[1024];
 	char	*new_cwd;
 
-	if (!shell->envp)
-		return (1);
-	if (getcwd(cwd, sizeof(cwd)) == NULL)
+	if (save_cwd(cwd, sizeof(cwd)) != 0)
 		return (perror("minishell: cd"), 1);
-	if (args[1] && (args[1][0] == '-') && args[1][1])
+	if (args[1] && args[1][0] == '-' && args[1][1])
 		return (ft_printf("minishell: cd: %s: invalid option\n", args[1]), 2);
-	if (args[2])
-		ft_printf("minishell: cd: too many arguments\n");
+	if (args[1] && args[2])
+		return (ft_printf("minishell: cd: too many arguments\n"), 1);
 	if (!args[1])
-	{
-		new_cwd = getenv("HOME");
-		if (!new_cwd)
-			return (perror("minishell: cd: HOME not set"), 1);
-	}
+		new_cwd = get_env_value("HOME", shell->envp);
 	else if (ft_strcmp(args[1], "-") == 0)
-	{
-		new_cwd = getenv("OLDPWD");
-		if (!new_cwd)
-			return (perror("minishell: cd: OLDPWD not set"), 1);
-		ft_printf("%s\n", new_cwd);
-	}
+		return (folder_back(shell));
 	else
 		new_cwd = args[1];
-	if (chdir(new_cwd) == -1)
-		return (ft_printf("minishell: cd: %s: %s\n", new_cwd, strerror(errno)),
-			1);
+	if (verify_change_dir(new_cwd) != 0)
+		return (1);
 	update_env(shell, "OLDPWD", cwd);
-	update_env(shell, "PWD", new_cwd);
+	if (save_cwd(cwd, sizeof(cwd)) == 0)
+		update_env(shell, "PWD", cwd);
 	return (0);
 }
