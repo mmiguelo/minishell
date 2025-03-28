@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/26 14:38:07 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/28 12:44:52 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,19 @@
 
 void	handle_export_var(char **arg, t_bt *shell, char *var, char *value)
 {
-	/* 	if (ft_strchr(*arg, '='))
-			update_var(arg, shell);
-		else if (!value)
-			add_var_in_env(arg, shell);*/
-	//TODO: check if variable already exists
-	//TODO: if it exists, update it
-	//TODO: if it doesn't exist, add it to the list
-	//TODO: check if there is a value
-	//TODO: if there is, add it to the variable
-	//TODO: check if there is +=
-	//TODO: if there is, append the value to the variable
-	(void)arg;
-	(void)shell;
-	(void)var;
+	if(ft_strnstr(*arg, "+=", ft_strlen(*arg)))
+	{
+		if (get_env_line(var, shell))
+		{
+			//TODO: append value to var
+			ft_printf("append value to var\n");
+		}
+		else
+		{
+			//TODO: add new var
+			ft_printf("add new var\n");
+		}
+	}
 	(void)value;
 }
 
@@ -54,7 +53,6 @@ int	check_export_var(char **args, t_bt *shell)
 	char	*var;
 	char	*value;
 
-	(void)shell;
 	i = 0;
 	while (args[++i])
 	{
@@ -138,14 +136,11 @@ int	ft_print_export(t_bt *shell)
 		i++;
 	}
 	sort_export(new_export);
-	i = 0;
-	while (new_export[i] != NULL)
+	i = -1;
+	while (new_export[++i] != NULL)
 	{
-		ft_putstr_fd("declare -x ", 1);
-		ft_putstr_fd(new_export[i], 1);
-		ft_putstr_fd("\n", 1);
+		ft_printf("declare -x %s\n", new_export[i]);
 		free(new_export[i]);
-		i++;
 	}
 	free(new_export);
 	return (0);

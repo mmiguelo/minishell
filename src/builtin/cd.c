@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:19:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/27 19:21:46 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/28 11:55:01 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,19 +57,12 @@ int	save_cwd(char *cwd, size_t size)
 	return (0);
 }
 
-int	verify_change_dir(char *dir)
+int	verify_dir(const char *dir)
 {
-	if (dir == NULL)
-	{
-		ft_printf("minishell: cd: HOME not set\n");
-		return (1);
-	}
-	else if (chdir(dir) != 0)
-	{
-		ft_printf("minishell: cd: %s: %s\n", dir, strerror(errno));
-		errno = 0;
-		return (1);
-	}
+	if (!dir || !dir[0] || access(dir, F_OK) != 0)
+		return (perror(dir), 1);
+	if (chdir(dir) != 0)
+		return (perror("cd"), 1);
 	return (0);
 }
 
@@ -77,14 +70,14 @@ int	folder_back(t_bt *shell)
 {
 	char	*oldpwd;
 
-	oldpwd = get_env_value("OLDPWD", shell->envp);
+	oldpwd = get_env_value("OLDPWD", shell);
 	if (oldpwd == NULL)
 	{
 		ft_printf("minishell: cd: OLDPWD not set\n");
 		return (1);
 	}
 	ft_printf("%s\n", oldpwd);
-	if (verify_change_dir(oldpwd) != 0)
+	if (verify_dir(oldpwd) != 0)
 		return (1);
 	return (0);
 }
@@ -118,12 +111,12 @@ int	ft_cd(char **args, t_bt *shell)
 	if (args[1] && args[2])
 		return (ft_printf("minishell: cd: too many arguments\n"), 1);
 	if (!args[1])
-		new_cwd = get_env_value("HOME", shell->envp);
+		new_cwd = get_env_value("HOME", shell);
 	else if (ft_strcmp(args[1], "-") == 0)
 		return (folder_back(shell));
 	else
 		new_cwd = args[1];
-	if (verify_change_dir(new_cwd) != 0)
+	if (verify_dir(new_cwd) != 0)
 		return (1);
 	update_env(shell, "OLDPWD", cwd);
 	if (save_cwd(cwd, sizeof(cwd)) == 0)
