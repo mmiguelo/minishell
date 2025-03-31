@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:19:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/28 11:55:01 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/31 15:27:31 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	update_env(t_bt *shell, const char *var, char *path)
 	int		i;
 	char	*new_line;
 	char	**env;
+	char	*temp;
 
 	i = get_env_line(var, shell);
 	if (i == -1)
@@ -39,14 +40,18 @@ void	update_env(t_bt *shell, const char *var, char *path)
 		while (*env)
 			env++;
 		new_line = ft_strjoin(var, "=");
+		temp = new_line;
 		new_line = ft_strjoin(new_line, path);
+		free(temp);
 		*env = new_line;
 	}
 	else
 	{
 		free(shell->envp[i]);
 		shell->envp[i] = ft_strjoin(var, "=");
+		temp = shell->envp[i];
 		shell->envp[i] = ft_strjoin(shell->envp[i], path);
+		free(temp);
 	}
 }
 
@@ -101,16 +106,15 @@ int	folder_back(t_bt *shell)
  */
 int	ft_cd(char **args, t_bt *shell)
 {
-	char	cwd[1024];
 	char	*new_cwd;
 
-	if (save_cwd(cwd, sizeof(cwd)) != 0)
+	if (save_cwd(shell->pwd, sizeof(shell->pwd)) != 0)
 		return (perror("minishell: cd"), 1);
 	if (args[1] && args[1][0] == '-' && args[1][1])
 		return (ft_printf("minishell: cd: %s: invalid option\n", args[1]), 2);
 	if (args[1] && args[2])
 		return (ft_printf("minishell: cd: too many arguments\n"), 1);
-	if (!args[1])
+	if (!args[1] || ft_strcmp(args[1], "~") == 0)
 		new_cwd = get_env_value("HOME", shell);
 	else if (ft_strcmp(args[1], "-") == 0)
 		return (folder_back(shell));
@@ -118,8 +122,8 @@ int	ft_cd(char **args, t_bt *shell)
 		new_cwd = args[1];
 	if (verify_dir(new_cwd) != 0)
 		return (1);
-	update_env(shell, "OLDPWD", cwd);
-	if (save_cwd(cwd, sizeof(cwd)) == 0)
-		update_env(shell, "PWD", cwd);
+	update_env(shell, "OLDPWD", shell->pwd);
+	if (save_cwd(shell->pwd, sizeof(shell->pwd)) == 0)
+		update_env(shell, "PWD", shell->pwd);
 	return (0);
 }

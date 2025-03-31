@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:19:11 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/25 12:27:46 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/31 15:31:11 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	ft_minishell(t_bt *shell, char **envp)
 		else
 			printf("Command not found\n");
 	}
+	ft_kill(&shell, 0);
 }
 
 int	main(int argc, char **argv, char **envp)

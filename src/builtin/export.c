@@ -6,71 +6,48 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/28 15:09:25 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/31 15:47:30 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	handle_export_var(char **arg, t_bt *shell, char *var, char *value)
-{
-	if(ft_strnstr(*arg, "+=", ft_strlen(*arg)))
-	{
-		if (get_env_line(var, shell))
-		{
-			//TODO: append value to var
-			ft_printf("append value to var\n");
-		}
-		else
-		{
-			//TODO: add new var
-			ft_printf("add new var\n");
-		}
-	}
-	(void)value;
-}
-
-/**
- * @brief Processes and validates environment variable assignments from the
- * export command.
- * 
- * This function processes each argument passed to the `export` command,
- * separating the variable names and their values. It validates the variables,
- * and if valid, it calls a handler function to perform the export action. If a
- * variable is invalid, it prints an error message. The function also prints the
- * variable and its value for debugging purposes.
- * 
- * @param args Array of strings representing the arguments passed to the `export`
- * command. Each argument can be a variable assignment of the form `VAR=VALUE`.
- * @param shell Pointer to the shell structure, which contains the environment
- * variables and other data.
- * @return int Returns `0` upon successful completion. If an error occurs (such
- * as an invalid variable), it prints an error message and returns `0`.
- */
-int	check_export_var(char **args, t_bt *shell)
+void	append_var_to_envp(char *var, char *value, t_bt *shell)
 {
 	int		i;
-	char	*var;
-	char	*value;
+	char	*new_var;
 
-	i = 0;
-	while (args[++i])
+	i = get_env_line(var, shell);
+	if (i >= 0)
 	{
-		var = get_export_var(args[i]);
-		value = get_export_value(args[i]);
-		if (validate_var(var))
-		{
-			handle_export_var(&args[i], shell, var, value);
-			ft_printf("var: %s\n", var);
-			ft_printf("value: %s\n", value);
-		}
-		else
-			print_invalid_var(var);
-		free(var);
-		if (value)
-			free(value);
+		new_var = ft_strdup_free(shell->envp[i], value);
+		free(shell->envp[i]);
+		shell->envp[i] = new_var;
 	}
-	return (0);
+/* 	else
+	{
+		new_var = ft_strjoin(var, value);
+		add_var_to_envp(new_var, NULL, shell);
+	} */
+}
+
+void	handle_export_var(char **arg, t_bt *shell, char *var, char *value)
+{
+	if (ft_strnstr(*arg, "+=", ft_strlen(*arg)))
+	{
+		append_var_to_envp(var, value, shell);
+		/* add_var_to_envp(var, value, shell); */
+	}
+	/* else if (ft_strchr(*arg, "="))
+	{
+		ft_erase_var(var, shell);
+		add_var_to_envp(var, value, shell);
+	}
+	else if (!value)
+	{
+		ft_erase_var(var, shell);
+		add_var_to_envp(var, NULL, shell);
+	} */
 }
 
 /**
@@ -125,25 +102,56 @@ int	ft_print_export(t_bt *shell)
 {
 	int		i;
 	char	**new_export;
+	int		j;
 
-	i = 0;
+	i = -1;
 	new_export = ft_calloc(ft_arrlen(shell->envp) + 1, sizeof(char *));
 	if (!new_export)
 		return (0);
-	while (shell->envp[i] != NULL)
-	{
+	while (shell->envp[++i])
 		new_export[i] = ft_strdup(shell->envp[i]);
-		i++;
-	}
 	sort_export(new_export);
 	i = -1;
-	while (new_export[++i] != NULL)
+	while (new_export[++i])
 	{
+		j = 0;
+		while (new_export[i][j])
+		{
+			if (new_export[i][j] == '=' && new_export[i][j + 1] != '\"')
+			{
+				new_export[i] = add_double_quotes(new_export[i], j + 1);
+				break ;
+			}
+			j++;
+		}
 		ft_printf("declare -x %s\n", new_export[i]);
 		free(new_export[i]);
 	}
 	free(new_export);
 	return (0);
+}
+
+char	*add_double_quotes(char *str, int j)
+{
+	char	*new_str;
+	int		i;
+	int		k;
+
+	new_str = ft_calloc(ft_strlen(str) + 3, sizeof(char));
+	if (!new_str)
+		return (NULL);
+	i = 0;
+	k = 0;
+	while (str[i])
+	{
+		if (i == j)
+			new_str[k++] = '\"';
+		new_str[k++] = str[i++];
+	}
+	new_str[k++] = '\"';
+	new_str[k] = '\0';
+	free(str);
+	return (new_str);
 }
 
 /**

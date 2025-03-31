@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:11:42 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/28 11:51:11 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/03/31 15:44:12 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_bt
 {
 	char		**envp;
 	char		**cmd;
-	char		*pwd;
+	char		pwd[1024];
 	char		*old_pwd;
 }				t_bt;
 
@@ -72,6 +72,8 @@ int			check_for_value(char *arg);
 char		*get_export_var(char *arg);
 char		*get_export_value(char *arg);
 int			export_error(char *arg);
+void		append_var_to_envp(char *var, char *value, t_bt *shell);
+char		*add_double_quotes(char *str, int j);
 
 //pwd
 int			ft_pwd(char **args, t_bt *shell);
@@ -94,8 +96,7 @@ void		sigint_handler(int sig);
 #                      	         FREE                                          #
 #=============================================================================*/
 
-int			free_envp(t_bt **shell, int i);
-int			free_cmd(t_bt **shell, int i);
+int			free_matriz(char **shell, int i);
 int			print_msg_error(char *error);
 void		print_invalid_var(char *var);
 
