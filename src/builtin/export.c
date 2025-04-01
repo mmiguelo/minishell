@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/04/01 12:37:52 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/04/01 12:45:34 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +37,23 @@ void	give_value(char **var, char *new_var, t_bt *shell)
 	free(new_var);
 }
 
-void	append_var_to_envp(char **var, t_bt *shell)
+void	append_var_to_envp(char **arg, t_bt *shell)
 {
 	int		i;
 	char	*new_var;
 	char	*new_value;
 
-	new_var = get_export_var(*var);
+	new_var = get_export_var(*arg);
 	i = get_env_line(new_var, shell);
 	if (i >= 0)
 	{
 		if (ft_strchr(shell->envp[i], '='))
-			return (concatenate_value(var, new_var, shell, i));
+			return (concatenate_value(arg, new_var, shell, i));
 		else
-			return (give_value(var, new_var, shell));
+			return (give_value(arg, new_var, shell));
 	}
-	new_value = ft_strdup(ft_strnstr(*var, "+=", ft_strlen(*var)) + 1);
-	*var = ft_strjoin(new_var, new_value);
-	ft_printf("var: %s\n", *var);
+	new_value = ft_strdup(ft_strnstr(*arg, "+=", ft_strlen(*arg)) + 1);
+	*arg = ft_strjoin(new_var, new_value);
 }
 
 void	handle_export_var(char **arg, t_bt *shell, char *var, char *value)
@@ -154,5 +153,5 @@ int	ft_export(char **args, t_bt *shell)
 		if (args[i] && export_error(args[i]))
 			return (1);
 	}
-	return (check_export_var(args, shell));
+	return (check_e09xport_var(args, shell));
 }
