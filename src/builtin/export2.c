@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 12:14:55 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/04/01 12:38:41 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/04/01 12:55:06 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,4 +106,15 @@ void	sort_export(char **new_export)
 			}
 		}
 	}
+}
+
+void	give_value(char **var, char *new_var, t_bt *shell)
+{
+	char	*new_value;
+
+	new_value = ft_strdup(ft_strnstr(*var, "+=", ft_strlen(*var)) + 2);
+	free(*var);
+	*var = ft_strdup_free(ft_strjoin(new_var, "="), new_value);
+	ft_erase_var(new_var, shell);
+	free(new_var);
 }
