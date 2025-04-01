@@ -6,36 +6,64 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/31 15:47:30 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/04/01 12:37:52 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	append_var_to_envp(char *var, char *value, t_bt *shell)
+void	concatenate_value(char **var, char *new_var, t_bt *shell, int i)
+{
+	char	*new_value;
+	char	*old_value;
+
+	old_value = get_env_value(*var, shell);
+	new_value = ft_strdup(ft_strnstr(*var, "+=", ft_strlen(*var)) + 2);
+	free(*var);
+	*var = ft_strdup_free(ft_strjoin(new_var, "="),
+			ft_strdup_free(old_value, new_value));
+	free(shell->envp[i]);
+	shell->envp[i] = ft_strdup(*var);
+}
+
+void	give_value(char **var, char *new_var, t_bt *shell)
+{
+	char	*new_value;
+
+	new_value = ft_strdup(ft_strnstr(*var, "+=", ft_strlen(*var)) + 2);
+	free(*var);
+	*var = ft_strdup_free(ft_strjoin(new_var, "="), new_value);
+	ft_erase_var(new_var, shell);
+	free(new_var);
+}
+
+void	append_var_to_envp(char **var, t_bt *shell)
 {
 	int		i;
 	char	*new_var;
+	char	*new_value;
 
-	i = get_env_line(var, shell);
+	new_var = get_export_var(*var);
+	i = get_env_line(new_var, shell);
 	if (i >= 0)
 	{
-		new_var = ft_strdup_free(shell->envp[i], value);
-		free(shell->envp[i]);
-		shell->envp[i] = new_var;
+		if (ft_strchr(shell->envp[i], '='))
+			return (concatenate_value(var, new_var, shell, i));
+		else
+			return (give_value(var, new_var, shell));
 	}
-/* 	else
-	{
-		new_var = ft_strjoin(var, value);
-		add_var_to_envp(new_var, NULL, shell);
-	} */
+	new_value = ft_strdup(ft_strnstr(*var, "+=", ft_strlen(*var)) + 1);
+	*var = ft_strjoin(new_var, new_value);
+	ft_printf("var: %s\n", *var);
 }
 
 void	handle_export_var(char **arg, t_bt *shell, char *var, char *value)
 {
+	(void)value;
+	(void)var;
 	if (ft_strnstr(*arg, "+=", ft_strlen(*arg)))
 	{
-		append_var_to_envp(var, value, shell);
+		append_var_to_envp(&(*arg), shell);
 		/* add_var_to_envp(var, value, shell); */
 	}
 	/* else if (ft_strchr(*arg, "="))
@@ -48,39 +76,6 @@ void	handle_export_var(char **arg, t_bt *shell, char *var, char *value)
 		ft_erase_var(var, shell);
 		add_var_to_envp(var, NULL, shell);
 	} */
-}
-
-/**
- * @brief Sorts an array of strings in lexicographical order.
- * 
- * This function sorts an array of strings (environment variables in this case)
- * in ascending lexicographical order using a simple bubble sort algorithm. It is
- * used to sort the environment variables before printing them in the
- * `ft_print_export` function, ensuring they are listed in alphabetical order.
- * 
- * @param new_export Array of strings (environment variables) to be sorted. Each
- * string represents an environment variable in the format `VAR=VALUE`.
- */
-void	sort_export(char **new_export)
-{
-	int		i;
-	int		j;
-	char	*temp;
-
-	i = -1;
-	while (new_export[++i] != NULL)
-	{
-		j = i;
-		while (new_export[++j] != NULL)
-		{
-			if (ft_strcmp(new_export[i], new_export[j]) > 0)
-			{
-				temp = new_export[i];
-				new_export[i] = new_export[j];
-				new_export[j] = temp;
-			}
-		}
-	}
 }
 
 /**
@@ -131,29 +126,6 @@ int	ft_print_export(t_bt *shell)
 	return (0);
 }
 
-char	*add_double_quotes(char *str, int j)
-{
-	char	*new_str;
-	int		i;
-	int		k;
-
-	new_str = ft_calloc(ft_strlen(str) + 3, sizeof(char));
-	if (!new_str)
-		return (NULL);
-	i = 0;
-	k = 0;
-	while (str[i])
-	{
-		if (i == j)
-			new_str[k++] = '\"';
-		new_str[k++] = str[i++];
-	}
-	new_str[k++] = '\"';
-	new_str[k] = '\0';
-	free(str);
-	return (new_str);
-}
-
 /**
  * @brief Implements the `export` command for the shell.
  * 
@@ -174,10 +146,10 @@ int	ft_export(char **args, t_bt *shell)
 {
 	int	i;
 
-	i = 0;
-	if (!args[1])
+	i = 1;
+	if (!args[i])
 		return (ft_print_export(shell));
-	while (args[++i])
+	while (args[i++])
 	{
 		if (args[i] && export_error(args[i]))
 			return (1);

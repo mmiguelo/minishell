@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:14:30 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/26 14:44:43 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/04/01 11:49:24 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ int	export_error(char *arg)
  * 
  * @param var The name of the variable that is not valid.
  */
-void	print_invalid_var(char *var)
+int	print_invalid_var(char *var)
 {
-	ft_printf("minishell: export: `%s': not a valid identifier\n", var);
+	return (ft_printf("minishell: export: `%s': not a valid identifier\n", var),
+		1);
 }

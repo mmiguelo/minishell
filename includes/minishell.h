@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:11:42 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/31 15:44:12 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/04/01 11:50:39 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int			check_for_value(char *arg);
 char		*get_export_var(char *arg);
 char		*get_export_value(char *arg);
 int			export_error(char *arg);
-void		append_var_to_envp(char *var, char *value, t_bt *shell);
+void		append_var_to_envp(char **var, t_bt *shell);
 char		*add_double_quotes(char *str, int j);
 
 //pwd
@@ -98,6 +98,6 @@ void		sigint_handler(int sig);
 
 int			free_matriz(char **shell, int i);
 int			print_msg_error(char *error);
-void		print_invalid_var(char *var);
+int			print_invalid_var(char *var);
 
 #endif
