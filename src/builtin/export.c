@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/04/01 12:45:34 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/04/01 12:46:19 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,5 +153,5 @@ int	ft_export(char **args, t_bt *shell)
 		if (args[i] && export_error(args[i]))
 			return (1);
 	}
-	return (check_e09xport_var(args, shell));
+	return (check_export_var(args, shell));
 }
