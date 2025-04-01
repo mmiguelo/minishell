@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/04/01 21:59:18 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/01 23:06:23 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	concatenate_value(char **var, char *new_var, t_bt *shell, int i)
 
 	old_value = get_value(shell->envp[i]);
 	new_value = ft_strdup(ft_strnstr(*var, "+=", ft_strlen(*var)) + 2);
-	/* free(*var); */
+	//free(*var);
 	*var = ft_strdup_free(ft_strjoin(new_var, "="),
 			ft_strdup_free(old_value, new_value));
 	free(shell->envp[i]);
@@ -43,14 +43,17 @@ void	append_var_to_envp(char **arg, t_bt *shell)
 	}
 	new_value = ft_strdup(ft_strnstr(*arg, "+=", ft_strlen(*arg)) + 1);
 	*arg = ft_strjoin(new_var, new_value);
-	free(new_var);
 	free(new_value);
+	free(new_var);
 }
 
 void	handle_export_var(char **arg, t_bt *shell, char *var, char *value)
 {
 	if (ft_strnstr(*arg, "+=", ft_strlen(*arg)))
+	{
 		append_var_to_envp(&(*arg), shell);
+		add_var_to_envp(*arg, shell);
+	}
 	else if (ft_strchr(*arg, '='))
 	{
 		ft_erase_var(var, shell);
