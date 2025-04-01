@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 12:14:55 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/04/01 12:55:06 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/04/01 15:49:38 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,4 +117,60 @@ void	give_value(char **var, char *new_var, t_bt *shell)
 	*var = ft_strdup_free(ft_strjoin(new_var, "="), new_value);
 	ft_erase_var(new_var, shell);
 	free(new_var);
+}
+
+int	add_var_to_envp(char *var, t_bt *shell)
+{
+	int		i;
+	char	*new_var;
+	char	**new_envp;
+
+	new_var = ft_strdup(var);
+	if (!new_var)
+		return (-1);
+	i = get_env_line(new_var, shell);
+	if (update_existing_var(new_var, shell, i) == 0)
+		return (0);
+	new_envp = realloc_env(shell->envp);
+	if (!new_envp)
+	{
+		free(new_var);
+		return (-1);
+	}
+	shell->envp = new_envp;
+	shell->envp[ft_arrlen(shell->envp)] = new_var;
+	return (0);
+}
+
+char	**realloc_env(char **envp)
+{
+	char	**new_envp;
+	int		i;
+	int		len;
+
+	len = ft_arrlen(envp);
+	i = 0;
+	new_envp = ft_calloc(len + 2, sizeof(char *));
+	if (!new_envp)
+		return (NULL);
+	while (envp[i])
+	{
+		new_envp[i] = ft_strdup(envp[i]);
+		i++;
+	}
+	new_envp[i] = NULL;
+	new_envp[i + 1] = NULL;
+	free(envp);
+	return (new_envp);
+}
+
+int	update_existing_var(char *new_var, t_bt *shell, int i)
+{
+	if (i >= 0)
+	{
+		free(shell->envp[i]);
+		shell->envp[i] = new_var;
+		return (0);
+	}
+	return (-1);
 }
