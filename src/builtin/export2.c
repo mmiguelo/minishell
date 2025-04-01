@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 12:14:55 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/04/01 15:49:38 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/04/01 16:45:34 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,4 +173,21 @@ int	update_existing_var(char *new_var, t_bt *shell, int i)
 		return (0);
 	}
 	return (-1);
+}
+
+char *get_value(char *var)
+{
+	char	*value;
+	int		i;
+
+	i = 0;
+	if (!var)
+		return (NULL);
+	while (var[i] && var[i] != '=')
+		i++;
+	value = ft_strdup(var + i + 1);
+	if (!value)
+		return (ft_strdup(""));
+	return (value);
+	printf("value: %s\n", value);
 }

@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/04/01 16:09:31 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/04/01 16:57:24 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,16 @@ void	concatenate_value(char **var, char *new_var, t_bt *shell, int i)
 	char	*new_value;
 	char	*old_value;
 
-	old_value = get_env_value(*var, shell);
+	old_value = get_value(shell->envp[i]);
 	ft_printf("var: %s\n", shell->envp[i]);
-	ft_printf("value:%s\n", old_value);
+	ft_printf("old value: %s\n", old_value);
 	new_value = ft_strdup(ft_strnstr(*var, "+=", ft_strlen(*var)) + 2);
+	printf("new_value: %s\n", new_value);
 	/* free(*var); */
 	*var = ft_strdup_free(ft_strjoin(new_var, "="),
 			ft_strdup_free(old_value, new_value));
 	free(shell->envp[i]);
-	shell->envp[i] = ft_strdup(*var);
+	shell->envp[i] = *var;
 }
 
 void	append_var_to_envp(char **arg, t_bt *shell)
@@ -53,10 +54,7 @@ void	handle_export_var(char **arg, t_bt *shell, char *var, char *value)
 	(void)value;
 	(void)var;
 	if (ft_strnstr(*arg, "+=", ft_strlen(*arg)))
-	{
 		append_var_to_envp(&(*arg), shell);
-		add_var_to_envp(*arg, shell);
-	}
 	else if (ft_strchr(*arg, '='))
 	{
 		ft_erase_var(var, shell);

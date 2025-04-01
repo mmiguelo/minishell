@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 11:19:57 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/04/01 16:09:12 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/04/01 16:34:32 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,13 @@ char	*get_env_value(const char *var, t_bt *shell)
 {
 	int	i;
 
-	i = get_env_line(var, shell);
-	if (i == -1)
-		return (NULL);
+	i = 0;
+	while (shell->envp[i])
+	{
+		if (ft_strncmp(shell->envp[i], var, ft_strlen(var)) == 0
+			&& shell->envp[i][ft_strlen(var)] == '=')
+			break ;
+		i++;
+	}
 	return (shell->envp[i] + ft_strlen(var) + 1);
 }
