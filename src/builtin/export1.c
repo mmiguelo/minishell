@@ -27,7 +27,6 @@ char	*get_export_value(char *arg)
 char	*get_export_var(char *arg)
 {
 	int		i;
-	char	*var;
 
 	i = 0;
 	while (arg[i] && arg[i] != '=')
@@ -36,8 +35,7 @@ char	*get_export_var(char *arg)
 			break ;
 		i++;
 	}
-	var = ft_substr(arg, 0, i);
-	return (ft_strdup(var));
+	return (ft_substr(arg, 0, i));
 }
 
 int	check_for_value(char *arg)
