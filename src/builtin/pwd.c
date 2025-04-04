@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:13 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/26 14:28:30 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/04/04 18:34:58 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@
  */
 static int	parse_pwd(char *arg)
 {
-	if (ft_strcmp(arg, ">") == 0 || ft_strcmp (arg, ">>") == 0
+	if (arg[0] == '-' && arg[1])
+		return (ft_printf("pwd: -%c: invalid option\n", arg[1]), 2);
+	else if (ft_strcmp(arg, ">") == 0 || ft_strcmp (arg, ">>") == 0
 		|| ft_strcmp(arg, "|") == 0)
 	{
 		//TODO: alterar esta condicao
@@ -68,9 +70,5 @@ int	ft_pwd(char **args, t_bt *shell)
 		return (0);
 	}
 	else
-	{
-		//TODO: implementar o return code para 1
-		ft_printf("pwd: error retrieving current directory\n");
-		return (1);
-	}
+		return (ft_printf("pwd: error retrieving current directory\n"), 1);
 }

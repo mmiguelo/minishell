@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:11:42 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/04/04 17:50:02 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/04/04 18:22:36 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ int			add_var_to_envp(char *var, t_bt *shell);
 int			update_existing_var(char *new_var, t_bt *shell, int i);
 char		**realloc_env(char **envp);
 char		*get_value(char *var);
+void		print_exported_vars(char **new_export);
+void		concatenate_value(char **var, char *new_var, t_bt *shell, int i);
 
 //pwd
 int			ft_pwd(char **args, t_bt *shell);

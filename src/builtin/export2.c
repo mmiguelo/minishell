@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 12:14:55 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/04/04 18:14:23 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/04/04 18:17:38 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,54 +147,4 @@ int	add_var_to_envp(char *var, t_bt *shell)
 	shell->envp = new_envp;
 	shell->envp[ft_arrlen(shell->envp)] = new_var;
 	return (0);
-}
-
-char	**realloc_env(char **envp)
-{
-	char	**new_envp;
-	int		i;
-	int		len;
-
-	len = ft_arrlen(envp);
-	i = 0;
-	new_envp = ft_calloc(len + 2, sizeof(char *));
-	if (!new_envp)
-		return (NULL);
-	while (envp[i])
-	{
-		new_envp[i] = ft_strdup(envp[i]);
-		i++;
-	}
-	new_envp[i] = NULL;
-	new_envp[i + 1] = NULL;
-	free(envp);
-	return (new_envp);
-}
-
-int	update_existing_var(char *new_var, t_bt *shell, int i)
-{
-	if (i >= 0)
-	{
-		free(shell->envp[i]);
-		shell->envp[i] = new_var;
-		return (0);
-	}
-	return (-1);
-}
-
-char *get_value(char *var)
-{
-	char	*value;
-	int		i;
-
-	i = 0;
-	if (!var)
-		return (NULL);
-	while (var[i] && var[i] != '=')
-		i++;
-	value = ft_strdup(var + i + 1);
-	if (!value)
-		return (ft_strdup(""));
-	return (value);
-	printf("value: %s\n", value);
 }
