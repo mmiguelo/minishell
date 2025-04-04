@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:21:45 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/03/26 11:46:40 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/04/04 11:38:13 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,17 @@ int	ft_env(char **args, t_bt *shell)
 	int	i;
 
 	(void)args;
-	i = 0;
+	i = -1;
 	if (!shell->envp)
 		return (0);
 	if (args[1])
 		env_error(args[1]);
 	else
 	{
-		while (shell->envp[i])
+		while (shell->envp[++i])
 		{
-			ft_printf("%s\n", shell->envp[i]);
-			i++;
+			if (ft_strchr(shell->envp[i], '='))
+				ft_printf("%s\n", shell->envp[i]);
 		}
 	}
 	return (0);
