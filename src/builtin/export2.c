@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 12:14:55 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/04/01 16:45:34 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/04/04 18:14:23 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,15 +108,22 @@ void	sort_export(char **new_export)
 	}
 }
 
-void	give_value(char **var, char *new_var, t_bt *shell)
+void	give_value(char **var, char *new_var, t_bt *shell, int index)
 {
+	char	*returned;
 	char	*new_value;
 
-	new_value = ft_strdup(ft_strnstr(*var, "+=", ft_strlen(*var)) + 2);
-	free(*var);
-	*var = ft_strdup_free(ft_strjoin(new_var, "="), new_value);
-	ft_erase_var(new_var, shell);
-	free(new_var);
+	returned = ft_strdup(ft_strnstr(*var, "+=", ft_strlen(*var)) + 1);
+	if (!returned)
+		return ;
+	new_value = ft_strdup_free(new_var, returned);
+	if (!new_value)
+		return ;
+	free(shell->envp[index]);
+	shell->envp[index] = ft_strdup(new_value);
+	if (!shell->envp[index])
+		return ;
+	free(new_value);
 }
 
 int	add_var_to_envp(char *var, t_bt *shell)

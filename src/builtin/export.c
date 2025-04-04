@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:20:37 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/04/04 14:58:59 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/04/04 18:07:03 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	append_var_to_envp(char **arg, t_bt *shell)
 		if (ft_strchr(shell->envp[i], '='))
 			return (concatenate_value(arg, new_var, shell, i));
 		else
-			return (give_value(arg, new_var, shell));
+			return (give_value(arg, new_var, shell, i));
 	}
 	new_value = ft_strdup(ft_strnstr(*arg, "+=", ft_strlen(*arg)) + 1);
 	*arg = ft_strjoin(new_var, new_value);
